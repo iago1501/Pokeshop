@@ -2,16 +2,16 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import Reducer from './ducks/reducer';
+import pokemonReducer from './ducks/pokemon';
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['reducer'],
+    whitelist: ['pokemon'],
 };
 
 const rootReducer = combineReducers({
-    reducer: Reducer,
+    pokemon: pokemonReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

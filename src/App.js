@@ -1,8 +1,19 @@
 import React from 'react';
-import './App.css';
 
-function App() {
-    return <div className="App" />;
+import Header from './components/Header'
+import PokeContainer from './components/PokeContainer'
+
+
+const App =  () => {
+
+    return (
+        <>
+          <Header/>
+          <PokeContainer/>
+        </>
+      )
 }
+
+
 
 export default App;
