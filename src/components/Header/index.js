@@ -21,7 +21,7 @@ export default function MenuAppBar() {
         <div className={classes.root}>
             <AppBar position="static" className={classes.menu}>
                 <Toolbar>
-                    <PokeFontHollow>PokéSHOP</PokeFontHollow>
+                    <PokeFontHollow>PokéFire SHOP</PokeFontHollow>
                     <MenuSearch/>
                     <div className={classes.root} />
                     <Cart/>
