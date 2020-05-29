@@ -5,8 +5,6 @@ import CartItem from '../CartItem';
 import styled from 'styled-components';
 import { EightbitButton } from '../CustomUI/Button';
 
-// está causando um bug ao renderizar
-
 export const CartItemsContainer = styled.div`
     height: 300px;
     width: 260px;
@@ -21,11 +19,13 @@ const CartContainer = ({ handleClose }) => {
     const cart = useSelector(cartSelector);
 
     return (
-        <div style={{textAlign: 'center', padding: '10px'}}>
+        <div style={{ textAlign: 'center', padding: '10px' }}>
             <CartItemsContainer>
-                {cart.map((pokemon) => (
-                    <CartItem {...pokemon} />
-                ))}
+                {cart.length > 0 ? (
+                    cart.map((pokemon) => <CartItem key={pokemon.id} {...pokemon} />)
+                ) : (
+                    <p>Não tem nada no carrinho =/</p>
+                )}
             </CartItemsContainer>
             <EightbitButton>Go to Checkout</EightbitButton>
         </div>

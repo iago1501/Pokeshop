@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import {memo} from 'react'
 
 import PokemonHollow from 'assets/fonts/pokemonhollow.ttf';
 import PokemonSolid from 'assets/fonts/pokemonsolid.ttf';
@@ -33,4 +34,4 @@ const GlobalStyle = createGlobalStyle`
       }
 `;
 
-export default GlobalStyle;
+export default memo(GlobalStyle);

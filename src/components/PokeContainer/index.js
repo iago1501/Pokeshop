@@ -23,9 +23,9 @@ const PokeContainer = () => {
         <div className={classes.root}>
             <button onClick={() => dispatch(fetchPokemonStartAsync())}>Fetch</button>
             <Grid container spacing={2}>
-                {pokemonList.map(pokemon=>
-                <Grid key={pokemon.pokemon.url} item xs={12} lg={2}>
-                    <PokeCard name={pokemon.pokemon.name}/>
+                {pokemonList.map(({pokemon: {name, url}})=>
+                <Grid key={url} item xs={12} lg={2}>
+                    <PokeCard name={name}/>
                 </Grid>
                 )}
 

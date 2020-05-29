@@ -3,29 +3,42 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const PokemonCartImage = styled.img`
-  height: 50px;
+    height: 50px;
 `;
 
 export const PokemonCartContainer = styled.div`
     display: flex;
     border-bottom: 1px solid #000;
     padding: 5px;
-`
+`;
 
-export const PokemonCartName = styled.div`
+export const PokemonCartInfos = styled.div`
     text-transform: capitalize;
-    padding: 10px;
-`
-
-
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    & > span {
+        font-size: 10px;
+    }
+    & > p {
+        font-size: 15px;
+        text-align: left;
+        margin-block-start: 0.5em;
+        margin-block-end: 0.5em;
+    }
+`;
 
 const CartItem = ({ name, sprites, quantity, price }) => {
     const total = quantity * price;
     return (
         <PokemonCartContainer>
-            <PokemonCartImage alt={name} src={sprites.front_default}/>
-            <PokemonCartName>{name}</PokemonCartName>
-            <span>{quantity} x {price} = {total}</span>
+            <PokemonCartImage alt={name} src={sprites.front_default} />
+            <PokemonCartInfos>
+                <p>{name}</p>{' '}
+                <span>
+                    {quantity} x {price} = R${total}
+                </span>
+            </PokemonCartInfos>
         </PokemonCartContainer>
     );
 };

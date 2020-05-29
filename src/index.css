@@ -5,3 +5,30 @@ body {
   background-color: #b3b3b3;
   padding-right: 0px !important;
 }
+
+@font-face {
+    font-family: 'Pokemon Hollow';
+    src: local('Pokemon Hollow'),
+    url('assets/fonts/pokemonhollow.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Pokemon Solid';
+    src: local('Pokemon Solid'),
+    url('assets/fonts/pokemonsolid.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Press Start 2P';
+    src: local('Press Start 2P'),
+    url('assets/fonts/pressstart2p.ttf') format('truetype');
+}
+
+@keyframes MoveUpDown {
+    0%, 100% {
+      bottom: 0;
+    }
+    50% {
+      bottom: 5px;
+    }
+  }

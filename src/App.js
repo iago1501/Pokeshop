@@ -1,19 +1,16 @@
 import React from 'react';
 
-import Header from './components/Header'
-import PokeContainer from './components/PokeContainer'
+import Header from './components/Header';
+import PokeContainer from './components/PokeContainer';
 
-
-const App =  () => {
+const App = () => {
 
     return (
         <>
-          <Header/>
-          <PokeContainer/>
+            <Header />
+            <PokeContainer />
         </>
-      )
-}
-
-
+    );
+};
 
 export default App;

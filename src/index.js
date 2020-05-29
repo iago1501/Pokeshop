@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import './index.css'
-import GlobalStyle from  './components/CustomUI/Global'
 
 import { store, persistor } from './store/store';
 
@@ -12,7 +11,6 @@ ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
             {/* <PersistGate persistor={persistor}> */}
-            <GlobalStyle/>
             <App />
             {/* </PersistGate> */}
         </Provider>

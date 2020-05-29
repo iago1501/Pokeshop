@@ -32,26 +32,24 @@ const Cart = () => {
                     <ShoppingCartIcon />
                 </Badge>
             </IconButton>
-            {cartQuantity > 0 && (
-                <Menu
-                    style={{ marginTop: '50px' }}
-                    id="menu-appbar"
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'right',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'right',
-                    }}
-                    open={open}
-                    onClose={handleClose}
-                >
-                    <CartContainer handleClose={handleClose} />
-                </Menu>
-            )}
+            <Menu
+                style={{ marginTop: '50px' }}
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                }}
+                open={open}
+                onClose={handleClose}
+            >
+                <CartContainer handleClose={handleClose} />
+            </Menu>
         </div>
     );
 };
