@@ -2,7 +2,8 @@ import axios from 'axios';
 
 // Selectors
 
-// export const someSelector = (state) => state.value;
+ export const pokemonSelector = (state) => state.pokemon.list;
+ export const typePokemonSelector = (state) => state.pokemon.type;
 
 // Action Types
 
@@ -14,7 +15,7 @@ export const Types = {
 // Reducer
 
 const INITIAL_STATE = {
-    pokemon: [],
+    list: [],
     type: '',
 };
 
@@ -22,7 +23,7 @@ const pokemonReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case Types.FETCH_POKEMON_SUCCESS:
             return { ...state,
-                pokemon: action.payload.data.pokemon,
+                list: action.payload.data.pokemon,
                 type: action.payload.data.name
              };
         default:
@@ -40,7 +41,8 @@ export const fetchPokemonSuccess = (pokeCollection) => ({
 export const fetchPokemonStartAsync = () => {
     return (dispatch) => {
         axios
-            .get('https://pokeapi.co/api/v2/type/3')
+            .get('https://pokeapi.co/api/v2/type/10')
+            // .get('https://pokeapi.co/api/v2/type/8')
             .then((res) => {
                  dispatch(fetchPokemonSuccess(res))
             })

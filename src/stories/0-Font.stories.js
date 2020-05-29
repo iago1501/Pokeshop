@@ -20,5 +20,5 @@ export const PokemonFont2 = () => (
 );
 
 export const BadgeFont1 = () => (
-    <PressStart2P color={'black'}>PokeFont Hollow</PressStart2P>
+    <PressStart2P color={'black'}>Press Start 2P</PressStart2P>
 );

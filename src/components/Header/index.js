@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     menu:{
-        backgroundColor: '#ab0000'
+        backgroundColor: '#ab0000',
+        top: '0px'
     }
 }));
 
@@ -19,7 +20,7 @@ export default function MenuAppBar() {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" className={classes.menu}>
+            <AppBar position="fixed" className={classes.menu}>
                 <Toolbar>
                     <PokeFontHollow>PokéFire SHOP</PokeFontHollow>
                     <MenuSearch/>

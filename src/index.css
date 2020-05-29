@@ -2,4 +2,6 @@ body {
   margin: 0;
   font-family: 'Trebuchet MS';
   font-weight: 600;
+  background-color: #b3b3b3;
+  padding-right: 0px !important;
 }
