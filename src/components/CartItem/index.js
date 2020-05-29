@@ -1,44 +1,38 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { removePokemon, addPokemon } from 'store/ducks/cart';
+import { PressStart2P } from '../CustomUI/Fonts';
+import {
+    PokemonCartContainer,
+    PokemonCartImage,
+    PokemonCartInfos,
+    PokemonCartName,
+    ButtonContainer,
+} from './styles';
 
-import styled from 'styled-components';
+const CartItem = ({ pokemon }) => {
+    const { name, sprites, quantity, price} = pokemon;
+    const total = (quantity * price).toFixed(2);
+    const dispatch = useDispatch();
 
-export const PokemonCartImage = styled.img`
-    height: 50px;
-`;
-
-export const PokemonCartContainer = styled.div`
-    display: flex;
-    border-bottom: 1px solid #000;
-    padding: 5px;
-`;
-
-export const PokemonCartInfos = styled.div`
-    text-transform: capitalize;
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    & > span {
-        font-size: 10px;
-    }
-    & > p {
-        font-size: 15px;
-        text-align: left;
-        margin-block-start: 0.5em;
-        margin-block-end: 0.5em;
-    }
-`;
-
-const CartItem = ({ name, sprites, quantity, price }) => {
-    const total = quantity * price;
     return (
         <PokemonCartContainer>
             <PokemonCartImage alt={name} src={sprites.front_default} />
             <PokemonCartInfos>
-                <p>{name}</p>{' '}
+                <PokemonCartName>{name}</PokemonCartName>
                 <span>
-                    {quantity} x {price} = R${total}
+                    R$ {price} * {quantity} = R$ {total}
                 </span>
             </PokemonCartInfos>
+            <ButtonContainer>
+                <a onClick={() => dispatch(removePokemon(pokemon))}>
+                    <PressStart2P>-</PressStart2P>
+                </a>
+                <PressStart2P>{quantity}</PressStart2P>
+                <a onClick={() => dispatch(addPokemon(pokemon, price))}>
+                    <PressStart2P>+</PressStart2P>
+                </a>
+            </ButtonContainer>
         </PokemonCartContainer>
     );
 };

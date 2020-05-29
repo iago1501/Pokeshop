@@ -7,16 +7,15 @@ import CartContainer from '../CartContainer';
 import { selectCartItemsCount } from 'store/ducks/cart';
 
 const Cart = () => {
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [open, setOpen] = useState(false);
     const cartQuantity = useSelector(selectCartItemsCount);
-    const open = Boolean(anchorEl);
 
     const handleMenu = (event) => {
-        setAnchorEl(event.currentTarget);
+        setOpen(!!event.currentTarget);
     };
 
     const handleClose = () => {
-        setAnchorEl(null);
+        setOpen(false);
     };
 
     return (
@@ -33,19 +32,17 @@ const Cart = () => {
                 </Badge>
             </IconButton>
             <Menu
-                style={{ marginTop: '50px' }}
                 id="menu-appbar"
-                anchorEl={anchorEl}
+                open={open}
                 anchorOrigin={{
-                    vertical: 'bottom',
+                    vertical: 'top',
                     horizontal: 'right',
                 }}
                 keepMounted
                 transformOrigin={{
-                    vertical: 'bottom',
+                    vertical: 'top',
                     horizontal: 'right',
                 }}
-                open={open}
                 onClose={handleClose}
             >
                 <CartContainer handleClose={handleClose} />
