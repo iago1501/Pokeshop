@@ -32,6 +32,7 @@ const Cart = () => {
                 </Badge>
             </IconButton>
             <Menu
+                anchorEl={open}
                 id="menu-appbar"
                 open={open}
                 anchorOrigin={{

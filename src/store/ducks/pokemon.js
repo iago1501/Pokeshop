@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { createSelector } from 'reselect';
 
 // Selectors
 
@@ -129,7 +128,7 @@ export const clearToShow = () => ({
 });
 
 export const searchPokemon = (text) => {
-    //acrescentar debounce
+    //TODO: Debounce might be good
     return (dispatch) => {
         dispatch(filterList(text));
         dispatch(clearToShow());
@@ -142,6 +141,13 @@ export const LoadMore = () => {
         dispatch(pokemonToShow());
     };
 };
+
+export const getPokemonByIdOrName = (value) =>
+    axios
+        .get(`https://pokeapi.co/api/v2/pokemon/${value}`)
+        .then((res) => {return res.data})
+        .catch((error) => error);
+
 
 export const fetchPokemonStartAsync = (type) => {
     return (dispatch) => {

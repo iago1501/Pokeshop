@@ -4,6 +4,7 @@ import { cartSelector, selectCartTotal } from 'store/ducks/cart';
 import CartItem from '../CartItem';
 import styled from 'styled-components';
 import { EightbitButton } from '../CustomUI/Button';
+import { withRouter } from 'react-router';
 
 export const CartItemsContainer = styled.div`
     height: auto;
@@ -15,9 +16,10 @@ export const CartItemsContainer = styled.div`
     overflow-y: auto;
 `;
 
-const CartContainer = ({ handleClose }) => {
+const CartContainer = ({ match, history }) => {
     const cart = useSelector(cartSelector);
     const total = useSelector(selectCartTotal).toFixed(2);
+    console.log('matchhhhhhh', match, history )
 
     return (
         <div style={{ textAlign: 'center', padding: '10px' }}>
@@ -40,10 +42,14 @@ const CartContainer = ({ handleClose }) => {
                 </div>
             )}
             {cart.length > 0 && (
-                <EightbitButton>Go to Checkout!</EightbitButton>
+                <EightbitButton
+                    onClick={() => history.push(`${match.url}cart`)}
+                >
+                    Go to Checkout!
+                </EightbitButton>
             )}
         </div>
     );
 };
 
-export default CartContainer;
+export default withRouter(CartContainer);

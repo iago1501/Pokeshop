@@ -38,7 +38,7 @@ export const ButtonContainer = styled.div`
     display: flex;
     align-items: center;
     font-size: 8px;
-    & > a {
+    & > div {
         cursor: pointer;
         border: 1px solid #000;
         padding: 2px;

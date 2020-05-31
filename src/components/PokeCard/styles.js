@@ -4,13 +4,13 @@ import { PressStart2P } from '../CustomUI/Fonts';
 const TYPES_BACKGROUND = {
     fire: 'rgb(255, 90, 90)',
     water: 'rgb(110, 110, 255)',
-    normal: 'rgb(255, 247, 156)',
+    normal: 'rgb(177, 175, 154)',
     fighting: 'rgb(255, 247, 156)',
     physical: 'rgb(255, 0, 0)',
     grass: 'rgb(115, 212, 115)',
     electric: 'rgb(243, 208, 37)',
     fairy: 'rgb(235, 143, 241)',
-    ice: 'rgb(106, 216, 206)',
+    ice: 'rgb(104,144,240)',
     psychic: 'rgb(130, 55, 130)'
 }
 
@@ -39,6 +39,9 @@ export const CardImageContainer = styled.div`
     width: 150px;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
+    &:hover {
+        background-color: rgba(0,0,0,0.3);
+    }
 `;
 
 export const CardImage = styled.img`

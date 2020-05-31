@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {Grid} from '@material-ui/core';
 import PokeCard from '../PokeCard';
@@ -9,7 +9,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import {
     pokemonToShowSelector,
     pokemonListSplittedSelector,
-    fetchPokemonStartAsync,
     nextPokemonSliceToShow,
     LoadMore,
 } from 'store/ducks/pokemon.js';
@@ -30,18 +29,13 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const PokeContainer = ({ match }) => {
+const PokeContainer = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
     const pokemonListSplitted = useSelector(pokemonListSplittedSelector);
     const pokemonToShow = useSelector(pokemonToShowSelector);
     const next = useSelector(nextPokemonSliceToShow);
-
-    useEffect(() => {
-        dispatch(fetchPokemonStartAsync(match.params.type));
-    },[]);
-
 
     const onLoadMore = () => {
             dispatch(LoadMore());

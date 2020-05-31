@@ -25,13 +25,13 @@ const CartItem = ({ pokemon }) => {
                 </span>
             </PokemonCartInfos>
             <ButtonContainer>
-                <a onClick={() => dispatch(removePokemon(pokemon))}>
+                <div onClick={() => dispatch(removePokemon(pokemon))}>
                     <PressStart2P>-</PressStart2P>
-                </a>
+                </div>
                 <PressStart2P>{quantity}</PressStart2P>
-                <a onClick={() => dispatch(addPokemon(pokemon, price))}>
+                <div onClick={() => dispatch(addPokemon(pokemon, price))}>
                     <PressStart2P>+</PressStart2P>
-                </a>
+                </div>
             </ButtonContainer>
         </PokemonCartContainer>
     );

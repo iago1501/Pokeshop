@@ -12,7 +12,7 @@ const BadgeContainer = styled.a`
 const PokeBadges = ({ types }) => (
     <BadgeContainer>
         {types.map((type) => (
-            <Badge color={type.type.name}>{type.type.name}</Badge>
+            <Badge key={type.type.name} color={type.type.name}>{type.type.name}</Badge>
         ))}
     </BadgeContainer>
 );

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import Header from './components/Header';
 import PokeShopHome from 'components/PokeShopHome'
-import PokeContainer from './components/PokeContainer';
+import PokeShopContainer from './components/PokeShopContainer'
 
 const App = () => {
 
@@ -11,8 +11,9 @@ const App = () => {
         <div>
             <Header />
             <Switch>
+                <Route exact path="/shop"><Redirect to={'/'} /></Route>
                 <Route exact path="/" component={PokeShopHome} />
-                <Route path="/shop/:type" component={PokeContainer} />
+                <Route path="/:type/shop" component={PokeShopContainer}/>
             </Switch>
         </div>
     );
