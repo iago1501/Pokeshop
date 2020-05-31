@@ -10,7 +10,6 @@ export const CartItemsContainer = styled.div`
     max-height: 300px;
     width: 260px;
     top: 50px;
-    padding: 10px;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -28,18 +27,21 @@ const CartContainer = ({ handleClose }) => {
                         <CartItem key={pokemon.id} pokemon={pokemon} />
                     ))
                 ) : (
-                    <p>You have to add items into your cart =/</p>
+                    <p>Your cart is empty =/</p>
                 )}
             </CartItemsContainer>
-            <div
-                style={{
-                    textAlign: 'center',
-                    textAlign: 'right'
-                }}
-            >
-                <span>Subtotal: R$ {total}</span>
-            </div>
-            <EightbitButton>Go to Checkout!</EightbitButton>
+            {cart.length > 0 && (
+                <div
+                    style={{
+                        textAlign: 'right',
+                    }}
+                >
+                    <span>Subtotal: R$ {total}</span>
+                </div>
+            )}
+            {cart.length > 0 && (
+                <EightbitButton>Go to Checkout!</EightbitButton>
+            )}
         </div>
     );
 };

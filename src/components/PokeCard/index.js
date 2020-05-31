@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+
 import { addPokemon } from 'store/ducks/cart';
+import { typeFetchSelector } from 'store/ducks/pokemon';
+import { Skeleton } from '@material-ui/lab';
 
 import { EightbitButton } from '../CustomUI/Button';
 import PokeBadges from '../PokeBadges';
@@ -19,6 +22,7 @@ import {
 const PokeCard = ({ name }) => {
     const [pokemon, setPokemon] = useState();
     const dispatch = useDispatch();
+    const type = useSelector(typeFetchSelector)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,8 +41,8 @@ const PokeCard = ({ name }) => {
     const getPrice = (height, weight) => ((height + weight) / 10).toFixed(2);
 
     return (
-        !!pokemon && (
-            <CardContainer>
+        !!pokemon ?
+            <CardContainer type = {type}>
                 <PokeSizes>
                     {getSizeInMeters(pokemon.height)}m <br />
                     {getWeightInKg(pokemon.weight)}kg
@@ -69,8 +73,9 @@ const PokeCard = ({ name }) => {
                 >
                     Add to Cart
                 </EightbitButton>
-            </CardContainer>
-        )
+            </CardContainer> :
+            <Skeleton variant="rect" width={'100%'} height={'42vh'} />
+
     );
 };
 

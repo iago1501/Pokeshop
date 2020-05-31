@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const MenuSearch = () => {
+const MenuSearch = ({onChange}) => {
     const classes = useStyles();
     return (
         <div className={classes.search}>
@@ -57,6 +57,7 @@ const MenuSearch = () => {
                 <SearchIcon />
             </div>
             <InputBase
+                onChange = {onChange}
                 placeholder="Search…"
                 classes={{
                     root: classes.inputRoot,

@@ -1,6 +1,19 @@
 import styled from 'styled-components';
 import { PressStart2P } from '../CustomUI/Fonts';
 
+const TYPES_BACKGROUND = {
+    fire: 'rgb(255, 90, 90)',
+    water: 'rgb(110, 110, 255)',
+    normal: 'rgb(255, 247, 156)',
+    fighting: 'rgb(255, 247, 156)',
+    physical: 'rgb(255, 0, 0)',
+    grass: 'rgb(115, 212, 115)',
+    electric: 'rgb(243, 208, 37)',
+    fairy: 'rgb(235, 143, 241)',
+    ice: 'rgb(106, 216, 206)',
+    psychic: 'rgb(130, 55, 130)'
+}
+
 export const CardContainer = styled.div`
     border-radius: 6px;
     -webkit-box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.75);
@@ -8,7 +21,7 @@ export const CardContainer = styled.div`
     box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.75);
     width: 100%;
     height: 42vh;
-    background-color: rgb(255, 90, 90);
+    background-color: ${props => TYPES_BACKGROUND[props.type]};
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

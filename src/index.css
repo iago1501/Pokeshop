@@ -36,4 +36,10 @@ body {
   #menu-appbar .MuiMenu-paper{
       background-color: whitesmoke;
       border: 1px solid #000;
+      top: 10vh !important;
+  }
+
+  #menu-appbar .MuiMenu-list{
+      width: auto !important;
+      padding-right: 0px !important;
   }
