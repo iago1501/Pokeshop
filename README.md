@@ -12,7 +12,7 @@
 
 > Desafio proposto pela empresa B2W
 
-**Badges will go here**
+**Build**
 
 - build status
 
@@ -20,11 +20,11 @@
 
 ***POKESHOP HOME***
 
-[![Home Page](/images/homepage.png)]()
+[![Home Page](https://raw.githubusercontent.com/iago1501/pokeshop/master/public/images/homepage.png)]()
 
 ## Installation
 
-- Para rodar o código em sua máquina é necessário ter yarn instalado na sua máquina:
+- Para rodar o código em sua máquina é necessário ter yarn instalado:
 
 ### Clone
 
@@ -46,14 +46,11 @@ $ yarn start
 $ yarn storybook
 ```
 
-## Team
-
-> Or Contributors/People
-
+## Desenvolvedor
 
 |**Iago Espinoza** |
 | :---: |
-| [![Iago1501](https://avatars2.githubusercontent.com/u/13649073?s=400&u=7171c01e60916597984c2802b7753cef11563e9d&v=4&s=50)](https://github.com/iago1501)    |
+| [![Iago1501](https://avatars2.githubusercontent.com/u/13649073?s=400&u=7171c01e60916597984c2802b7753cef11563e9d&v=4&s=100)](https://github.com/iago1501)    |
 | <a href="https://github.com/iago1501" target="_blank">`github.com/iago1501`</a> |
 
 ---
