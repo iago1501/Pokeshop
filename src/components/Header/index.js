@@ -12,6 +12,8 @@ import { MENU_COLORS } from './data';
 import styled from 'styled-components';
 
 export const CustomPokeFont = styled(PokeFontHollow)`
+    cursor: pointer;
+    margin-left: 50px;
     @media (max-width: 700px) {
         font-size: 15px;
         white-space: nowrap;
@@ -55,7 +57,6 @@ const MenuAppBar = ({ history, match }) => {
                         title={`Back to ${type !== '' ? type : ''}shop page`}
                     >
                         <CustomPokeFont
-                            style={{ cursor: 'pointer', marginLeft: '50px' }}
                             onClick={() =>
                                 type === ''
                                     ? history.push(`${match.url}`)
