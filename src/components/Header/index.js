@@ -9,6 +9,16 @@ import { withRouter } from 'react-router';
 import Cart from '../Cart';
 import HomeIcon from '@material-ui/icons/Home';
 import { MENU_COLORS } from './data';
+import styled from 'styled-components';
+
+export const CustomPokeFont = styled(PokeFontHollow)`
+    @media (max-width: 700px) {
+        font-size: 15px;
+        white-space: nowrap;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+`;
 
 const useStyles = (type) =>
     makeStyles({
@@ -35,16 +45,25 @@ const MenuAppBar = ({ history, match }) => {
             <AppBar position="fixed" className={classes.menu}>
                 <Toolbar>
                     <Tooltip title="Back to Pokemon Type Selector">
-                        <HomeIcon style={{ cursor: 'pointer'}} onClick={() => history.push(`${match.url}`)} />
+                        <HomeIcon
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => history.push(`${match.url}`)}
+                        />
                     </Tooltip>
 
-                    <Tooltip title={`Back to ${type !== '' ? type : '' }shop page`}>
-                        <PokeFontHollow
-                            style={{ cursor: 'pointer', marginLeft: '50px'}}
-                            onClick={() => type === '' ? history.push(`${match.url}`) : history.push(`${match.url}${type}/shop`)}
+                    <Tooltip
+                        title={`Back to ${type !== '' ? type : ''}shop page`}
+                    >
+                        <CustomPokeFont
+                            style={{ cursor: 'pointer', marginLeft: '50px' }}
+                            onClick={() =>
+                                type === ''
+                                    ? history.push(`${match.url}`)
+                                    : history.push(`${match.url}${type}/shop`)
+                            }
                         >
-                            Poké{type === typeshop ? type : '' } SHOP
-                        </PokeFontHollow>
+                            Poké{type === typeshop ? type : ''} SHOP
+                        </CustomPokeFont>
                     </Tooltip>
 
                     {type && (

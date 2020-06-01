@@ -23,6 +23,10 @@ export const PokeDetailsContainer = styled.div`
 export const PokeWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 4fr;
+
+    @media (max-width: 700px) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 export const PomeImageContainer = styled.div`
