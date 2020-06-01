@@ -50,13 +50,12 @@ $ yarn storybook
 
 > Or Contributors/People
 
-| :---: |:---:| :---:|
-| [![FVCproductions](https://avatars2.githubusercontent.com/u/13649073?s=400&u=7171c01e60916597984c2802b7753cef11563e9d&v=4&s=200)](https://github.com/iago1501)    |
+
+| <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> |
+| :---: |
+| [![Iago1501](https://avatars2.githubusercontent.com/u/13649073?s=400&u=7171c01e60916597984c2802b7753cef11563e9d&v=4&s=200)](https://github.com/iago1501)    |
 |
 | <a href="https://github.com/iago1501" target="_blank">`github.com/iago1501`</a> |
-
-- You can just grab their GitHub profile image URL
-- You should probably resize their picture using `?s=200` at the end of the image URL.
 
 ---
 
@@ -70,4 +69,8 @@ $ yarn storybook
 
 - **Pretende fazer modificações futuras?**
     - Sim, dar o ecommerce como completo ainda faltam muitas coisas, como:
-        - Adicionar helmets ou passar a aplicação para um next.js
+        - Adicionar helmets ou passar a aplicação para um next.js;
+        - Fazer algumas configurações a mais para versão mobile;
+        - Acrescentar testes E2E e testes unitários;
+        - Acrescentar melhorias de UX para o usuário;
+        - etc...
