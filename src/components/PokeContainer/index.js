@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         margin: '10px',
-        marginTop: '10vh',
+        marginTop: '80px',
     },
     progress: {
         height: '10px',
