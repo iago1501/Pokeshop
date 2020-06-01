@@ -1,5 +1,6 @@
 import React from 'react';
-import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { browserHistory } from 'react-router';
 
 import Header from 'components/Header';
 import PokeShopHome from 'components/PokeShopHome';
@@ -11,8 +12,7 @@ const App = () => {
     return (
         <div>
             <Header />
-            <BrowserRouter basename="/">
-                <Switch>
+                <Switch basename="/" >
                     <Route exact path="/" component={PokeShopHome} />
                     <Route
                         exact
@@ -29,7 +29,6 @@ const App = () => {
                         <Redirect to={'/'} />
                     </Route>
                 </Switch>
-            </BrowserRouter>
         </div>
     );
 };
