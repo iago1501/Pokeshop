@@ -10,7 +10,7 @@ import { store, persistor } from './store/store';
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter basename="/">
+        <BrowserRouter basename="/pokeshop">
             {/* <PersistGate persistor={persistor}> */}
             <App />
             {/* </PersistGate> */}

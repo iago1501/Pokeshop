@@ -59,7 +59,7 @@ const MenuSearch = ({ onChange, history, match }) => {
             </div>
             <InputBase
                 onChange={onChange}
-                onKeyUp={(e) => e.which === 13 && history.push(`${match.url}/${history.location.pathname.split('/')[1]}/shop`)}
+                onKeyUp={(e) => e.which === 13 && history.push(`${match.url}${history.location.pathname.split('/')[1]}/shop`)}
                 placeholder="Search…"
                 classes={{
                     root: classes.inputRoot,

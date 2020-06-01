@@ -39,7 +39,7 @@ const MenuAppBar = ({ history, match }) => {
                     <Tooltip title="Back to shop page">
                         <PokeFontHollow
                             style={{ cursor: 'pointer', marginLeft: '50px'}}
-                            onClick={() => type === '' ? history.push(`${match.url}`) : history.push(`${match.url}/${type}/shop`)}
+                            onClick={() => type === '' ? history.push(`${match.url}`) : history.push(`${match.url}${type}/shop`)}
                         >
                             Poké{type} SHOP
                         </PokeFontHollow>
