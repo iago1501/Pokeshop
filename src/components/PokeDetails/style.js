@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const PokeDetailsContainer = styled.div`
     position: relative;
-    margin: 18vh 10vw 0px 10vw;
+    margin: 15vh 10vw 0px 10vw;
     color: #fff;
     background-color: #212529;
     border-color: white;
@@ -25,7 +25,7 @@ export const PokeWrapper = styled.div`
     grid-template-columns: 1fr 4fr;
 
     @media (max-width: 700px) {
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
     }
 `;
 
@@ -33,6 +33,7 @@ export const PomeImageContainer = styled.div`
     text-align: center;
     display: flex;
     padding: 10px;
+    justify-content: center;
     & > h3 {
         cursor: pointer;
         font-size: 30px;
@@ -68,6 +69,9 @@ export const PokeBaseInfoContainer = styled.div`
 export const BaseInfoHeader = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr;
+    @media (max-width: 700px) {
+        grid-template-columns: max-content;
+    }
     & > h3 {
         font-size: 0.8rem;
     }
@@ -88,9 +92,16 @@ export const BaseInfoHeader = styled.div`
 
 export const BaseInfoBody = styled.div`
     display: flex;
+    flex-direction: row;
     & > h3 {
         width: 100%;
         font-size: 0.8rem;
+        @media (max-width: 700px) {
+            margin-top: 10px;
+        }
+    }
+    @media (max-width: 700px) {
+        flex-direction: column;
     }
 `;
 
@@ -100,11 +111,19 @@ export const PokeBaseInfo = styled.div`
     padding: 10px;
     display: grid;
     grid-template-rows: 50px 20px;
+    @media (max-width: 700px) {
+        margin: 10px;
+        grid-template-rows: 80px;
+    }
 `;
 
 export const ActionDiv = styled.div`
     margin-left: 5vw;
     & > a {
         margin-top: 10px;
+    }
+    @media (max-width: 700px) {
+        text-align: center;
+        margin: 10px;
     }
 `;

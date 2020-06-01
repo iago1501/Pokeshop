@@ -8,8 +8,7 @@ import cartReducer from './ducks/cart'
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: [''],
-    // whitelist: ['cart'],
+    whitelist: ['cart'],
 };
 
 const rootReducer = combineReducers({
