@@ -16,8 +16,9 @@ const HomeDiv = styled.div`
     margin: 0 7.5px 15px;
     grid-gap: 20px;
 
-    @media (min-width: 700px) {
+    @media (max-width: 700px) {
         grid-template-columns: 1fr;
+        height: auto;
     }
 `;
 
@@ -31,6 +32,9 @@ const HomeImageDiv = styled.div`
     &:hover {
         transform: scale(1.1);
         transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    }
+    @media (max-width: 700px) {
+        height: 200px;
     }
 `;
 
