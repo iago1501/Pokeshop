@@ -10,7 +10,7 @@ import { withRouter } from 'react-router';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        margin: '15h 10vw',
+        margin: '15vh 10vw',
     },
     paper: {
         padding: theme.spacing(2),

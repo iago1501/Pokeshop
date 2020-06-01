@@ -63,7 +63,7 @@ h2 {
   border-radius: 50%;
   bottom: auto;
   top: 28px;
-  -webkit-animation: blink 4s infinite;
+  animation: blink 4s infinite;
 }
 
 
