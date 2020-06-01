@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, HashRouter } from 'react-router-dom';
 
 import Header from 'components/Header';
 import PokeShopHome from 'components/PokeShopHome';
@@ -11,23 +11,25 @@ const App = () => {
     return (
         <div>
             <Header />
-            <Switch>
-                <Route exact path="/" component={PokeShopHome} />
-                <Route
-                    exact
-                    path="/shop/checkout"
-                    component={CheckoutContainer}
-                />
-                <Route
-                    exact
-                    path="/shop/checkout/success"
-                    component={CheckoutSuccess}
-                />
-                <Route path="/:type/shop" component={PokeShopContainer} />
-                <Route exact path="/shop">
-                    <Redirect to={'/'} />
-                </Route>
-            </Switch>
+            <HashRouter basename="/">
+                <Switch>
+                    <Route exact path="/" component={PokeShopHome} />
+                    <Route
+                        exact
+                        path="/shop/checkout"
+                        component={CheckoutContainer}
+                    />
+                    <Route
+                        exact
+                        path="/shop/checkout/success"
+                        component={CheckoutSuccess}
+                    />
+                    <Route path="/:type/shop" component={PokeShopContainer} />
+                    <Route exact path="/shop">
+                        <Redirect to={'/'} />
+                    </Route>
+                </Switch>
+            </HashRouter>
         </div>
     );
 };
