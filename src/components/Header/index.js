@@ -25,7 +25,9 @@ const useStyles = (type) =>
 
 const MenuAppBar = ({ history, match }) => {
     const type = useSelector(typeFetchSelector);
-    const classes = useStyles(type)();
+    const typeshop = history.location.pathname.split('/')[1];
+
+    const classes = useStyles(typeshop)();
     const dispatch = useDispatch();
 
     return (
@@ -36,12 +38,12 @@ const MenuAppBar = ({ history, match }) => {
                         <HomeIcon style={{ cursor: 'pointer'}} onClick={() => history.push(`${match.url}`)} />
                     </Tooltip>
 
-                    <Tooltip title="Back to shop page">
+                    <Tooltip title={`Back to ${type !== '' ? type : '' }shop page`}>
                         <PokeFontHollow
                             style={{ cursor: 'pointer', marginLeft: '50px'}}
                             onClick={() => type === '' ? history.push(`${match.url}`) : history.push(`${match.url}${type}/shop`)}
                         >
-                            Poké{type} SHOP
+                            Poké{type === typeshop ? type : '' } SHOP
                         </PokeFontHollow>
                     </Tooltip>
 

@@ -15,6 +15,10 @@ const HomeDiv = styled.div`
     justify-content: center;
     margin: 0 7.5px 15px;
     grid-gap: 20px;
+
+    @media (min-width: 700px) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 const HomeImageDiv = styled.div`
@@ -39,7 +43,6 @@ const HomeImageContainer = styled.div`
 
 const PokeShopHome = ({ match, history }) => {
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         dispatch(clearType());
