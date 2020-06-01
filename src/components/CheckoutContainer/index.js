@@ -51,8 +51,8 @@ const CheckoutContainer = ({ history, match }) => {
 
     return (
         <div className={classes.root}>
-            <Grid container spacing={3}>
-                <Grid item md={12} className={classes.externalGrid}>
+            <Grid container spacing={3} xs={12} md={12}>
+                <Grid item md={12} xs={12} className={classes.externalGrid}>
                     <Paper className={classes.paper}>
                         <Hidden only="xs">
                             <Grid container md={12} className={classes.header}>
