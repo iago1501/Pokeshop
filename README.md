@@ -51,7 +51,7 @@ $ yarn storybook
 > Or Contributors/People
 
 
-| <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> |
+|**Iago Espinoza** |
 | :---: |
 | [![Iago1501](https://avatars2.githubusercontent.com/u/13649073?s=400&u=7171c01e60916597984c2802b7753cef11563e9d&v=4&s=50)](https://github.com/iago1501)    |
 | <a href="https://github.com/iago1501" target="_blank">`github.com/iago1501`</a> |
