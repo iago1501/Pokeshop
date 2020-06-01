@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/pokeshop/static/css/main.1c6f90c3.chunk.css",
+    "main.js": "/pokeshop/static/js/main.02bb1364.chunk.js",
+    "main.js.map": "/pokeshop/static/js/main.02bb1364.chunk.js.map",
+    "runtime-main.js": "/pokeshop/static/js/runtime-main.53a44e51.js",
+    "runtime-main.js.map": "/pokeshop/static/js/runtime-main.53a44e51.js.map",
+    "static/js/2.70866475.chunk.js": "/pokeshop/static/js/2.70866475.chunk.js",
+    "static/js/2.70866475.chunk.js.map": "/pokeshop/static/js/2.70866475.chunk.js.map",
+    "index.html": "/pokeshop/index.html",
+    "precache-manifest.8af286fe9a29055abd4dc889424ba54c.js": "/pokeshop/precache-manifest.8af286fe9a29055abd4dc889424ba54c.js",
+    "service-worker.js": "/pokeshop/service-worker.js",
+    "static/css/main.1c6f90c3.chunk.css.map": "/pokeshop/static/css/main.1c6f90c3.chunk.css.map",
+    "static/js/2.70866475.chunk.js.LICENSE.txt": "/pokeshop/static/js/2.70866475.chunk.js.LICENSE.txt",
+    "static/media/fairy.png": "/pokeshop/static/media/fairy.63da3b8b.png",
+    "static/media/fire.png": "/pokeshop/static/media/fire.2d3231bc.png",
+    "static/media/ice.png": "/pokeshop/static/media/ice.1a9d5f7b.png",
+    "static/media/normal.png": "/pokeshop/static/media/normal.d96f3360.png",
+    "static/media/index.css": "/pokeshop/static/media/pressstart2p.74496d90.ttf",
+    "static/media/psychic.png": "/pokeshop/static/media/psychic.d2d4fec6.png",
+    "static/media/water.png": "/pokeshop/static/media/water.2029fe65.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.53a44e51.js",
+    "static/js/2.70866475.chunk.js",
+    "static/css/main.1c6f90c3.chunk.css",
+    "static/js/main.02bb1364.chunk.js"
+  ]
+}
