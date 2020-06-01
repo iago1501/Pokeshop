@@ -39,7 +39,7 @@ const CheckoutItem = ({ pokemon }) => {
     return (
         <Grid container md={12} xs={12} className={classes.item}>
             <Grid item md={3}>
-                <img src={sprites.front_default} />
+                <img alt="pokemon sprite" src={sprites.front_default} />
             </Grid>
             <Grid item md={3} xs={12}>
                 <p className={classes.value}>{name}</p>
