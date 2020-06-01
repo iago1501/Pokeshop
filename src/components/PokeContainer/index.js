@@ -56,7 +56,7 @@ const PokeContainer = () => {
                 >
                     <Grid container spacing={2}>
                         {pokemonToShow.map(({ pokemon: { name, url } }) => (
-                            <Grid key={url} item xs={12} lg={2}>
+                            <Grid key={url} item xs={12} lg={2} md={3} sm={4}>
                                 <PokeCard name={name} />
                             </Grid>
                         ))}

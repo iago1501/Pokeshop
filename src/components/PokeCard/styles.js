@@ -20,7 +20,8 @@ export const CardContainer = styled.div`
     -moz-box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.75);
     width: 100%;
-    height: 40vh;
+    height: auto;
+    min-height: 300px;
     background-color: ${props => TYPES_BACKGROUND[props.type]};
     display: flex;
     flex-direction: column;

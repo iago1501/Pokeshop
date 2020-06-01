@@ -16,7 +16,12 @@
 
 [![Home Page](https://raw.githubusercontent.com/iago1501/pokeshop/master/public/images/homepage.png)]()
 
-## Installation
+## Acesso
+
+- O site pode ser acessado através do link:
+    <a href="https://iago1501.github.io/pokeshop/" target="_blank">`https://iago1501.github.io/pokeshop/`</a>
+
+## Instalação
 
 - Para rodar o código em sua máquina é necessário ter yarn instalado:
 
