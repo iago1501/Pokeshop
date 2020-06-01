@@ -92,3 +92,9 @@ export const PokeInfo = styled.div`
     width: 70%;
     height: 60px;
 `;
+
+export const ButtonContainer = styled.div`
+    @media (max-width: 700px) {
+        margin-top: 2vh;
+    }
+`

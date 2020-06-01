@@ -22,6 +22,7 @@ import {
     PokeInfo,
     PokeName,
     PokeSizes,
+    ButtonContainer,
 } from './styles.js';
 
 const HtmlTooltip = withStyles((theme) => ({
@@ -35,14 +36,13 @@ const HtmlTooltip = withStyles((theme) => ({
 }))(Tooltip);
 
 const PokeCard = ({ name, match, history }) => {
-
     const [pokemon, setPokemon] = useState();
     const dispatch = useDispatch();
     const type = useSelector(typeFetchSelector);
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getPokemonByIdOrName(name)
+            const result = await getPokemonByIdOrName(name);
             setPokemon(result);
         };
 
@@ -60,7 +60,9 @@ const PokeCard = ({ name, match, history }) => {
                 {getWeightInKg(pokemon.weight)}kg
             </PokeSizes>
             <HtmlTooltip
-                onClick={() => history.push(`${match.url}/details/${pokemon.id}`)}
+                onClick={() =>
+                    history.push(`${match.url}/details/${pokemon.id}`)
+                }
                 title={<PressStart2P>Details</PressStart2P>}
             >
                 <CardImageContainer>
@@ -78,20 +80,20 @@ const PokeCard = ({ name, match, history }) => {
                 </PokeInfo>
                 <PokeBadges types={pokemon.types} />
             </InfoContainer>
-            <div>
-            <EightbitButton
-                onClick={() =>
-                    dispatch(
-                        addPokemon(
-                            pokemon,
-                            getPrice(pokemon.height, pokemon.weight)
+            <ButtonContainer>
+                <EightbitButton
+                    onClick={() =>
+                        dispatch(
+                            addPokemon(
+                                pokemon,
+                                getPrice(pokemon.height, pokemon.weight)
+                            )
                         )
-                    )
-                }
-            >
-                Add to Cart
-            </EightbitButton>
-            </div>
+                    }
+                >
+                    Add to Cart
+                </EightbitButton>
+            </ButtonContainer>
         </CardContainer>
     ) : (
         <Skeleton variant="rect" width={'100%'} height={'42vh'} />
