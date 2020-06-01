@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const CheckoutContainer = ({history}) => {
+const CheckoutContainer = ({history, match}) => {
     const classes = useStyles();
     const cart = useSelector(cartSelector);
     const total = useSelector(selectCartTotal).toFixed(2);
@@ -47,7 +47,7 @@ const CheckoutContainer = ({history}) => {
     const onToken = (token) => {
         dispatch(clearCart());
         // history.push(`/${history.location.pathname.split('/')[1]}/shop/checkout/success`);
-        history.push('/shop/checkout/success');
+        history.push(`${match.url}/shop/checkout/success`);
     };
 
     return (

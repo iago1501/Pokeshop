@@ -33,13 +33,13 @@ const MenuAppBar = ({ history, match }) => {
             <AppBar position="fixed" className={classes.menu}>
                 <Toolbar>
                     <Tooltip title="Back to Pokemon Type Selector">
-                        <HomeIcon style={{ cursor: 'pointer'}} onClick={() => history.push(`/`)} />
+                        <HomeIcon style={{ cursor: 'pointer'}} onClick={() => history.push(`${match.url}`)} />
                     </Tooltip>
 
                     <Tooltip title="Back to shop page">
                         <PokeFontHollow
                             style={{ cursor: 'pointer', marginLeft: '50px'}}
-                            onClick={() => type === '' ? history.push('/') : history.push(`/${type}/shop`)}
+                            onClick={() => type === '' ? history.push(`${match.url}`) : history.push(`${match.url}/${type}/shop`)}
                         >
                             Poké{type} SHOP
                         </PokeFontHollow>
