@@ -1,9 +1,3 @@
-<!-- <a href="http://fvcproductions.com"><img src="https://avatars1.githubusercontent.com/u/4284691?v=3&s=200" title="FVCproductions" alt="FVCproductions"></a> -->
-
-<!-- [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) -->
-
-***INSERT GRAPHIC HERE (include hyperlink in image)***
-
 # PokéShop
 
 > Onde se pode comprar pokemons de vários tipos!
@@ -64,9 +58,9 @@ $ yarn storybook
     - Confesso que fazia tempo que não me divertia realizando um desenvolvimento de código, principalmente na confecção do visual retrô, foi bem bacana
 
 - **Pretende fazer modificações futuras?**
-    - Sim, dar o ecommerce como completo ainda faltam muitas coisas, como:
-        - Adicionar helmets ou passar a aplicação para um next.js;
+    - Sim, para dar o ecommerce como completo ainda faltam muitas coisas, como:
+        - Adicionar helmets / passar a aplicação para um next.js;
         - Fazer algumas configurações a mais para versão mobile;
         - Acrescentar testes E2E e testes unitários;
-        - Acrescentar melhorias de UX para o usuário;
+        - Acrescentar melhorias de UX e UI para o usuário;
         - etc...
