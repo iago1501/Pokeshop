@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/pokeshop/static/css/main.1c6f90c3.chunk.css",
-    "main.js": "/pokeshop/static/js/main.30349b42.chunk.js",
-    "main.js.map": "/pokeshop/static/js/main.30349b42.chunk.js.map",
+    "main.js": "/pokeshop/static/js/main.2767b464.chunk.js",
+    "main.js.map": "/pokeshop/static/js/main.2767b464.chunk.js.map",
     "runtime-main.js": "/pokeshop/static/js/runtime-main.4c712dd4.js",
     "runtime-main.js.map": "/pokeshop/static/js/runtime-main.4c712dd4.js.map",
-    "static/js/2.38c31ae9.chunk.js": "/pokeshop/static/js/2.38c31ae9.chunk.js",
-    "static/js/2.38c31ae9.chunk.js.map": "/pokeshop/static/js/2.38c31ae9.chunk.js.map",
+    "static/js/2.7ec8e396.chunk.js": "/pokeshop/static/js/2.7ec8e396.chunk.js",
+    "static/js/2.7ec8e396.chunk.js.map": "/pokeshop/static/js/2.7ec8e396.chunk.js.map",
     "index.html": "/pokeshop/index.html",
-    "precache-manifest.e345e777c2c8b096af87cf76a1c372cb.js": "/pokeshop/precache-manifest.e345e777c2c8b096af87cf76a1c372cb.js",
+    "precache-manifest.6338aab18d28218b0d9863e9fe9d2025.js": "/pokeshop/precache-manifest.6338aab18d28218b0d9863e9fe9d2025.js",
     "service-worker.js": "/pokeshop/service-worker.js",
     "static/css/main.1c6f90c3.chunk.css.map": "/pokeshop/static/css/main.1c6f90c3.chunk.css.map",
-    "static/js/2.38c31ae9.chunk.js.LICENSE.txt": "/pokeshop/static/js/2.38c31ae9.chunk.js.LICENSE.txt",
+    "static/js/2.7ec8e396.chunk.js.LICENSE.txt": "/pokeshop/static/js/2.7ec8e396.chunk.js.LICENSE.txt",
     "static/media/fairy.png": "/pokeshop/static/media/fairy.63da3b8b.png",
     "static/media/fire.png": "/pokeshop/static/media/fire.2d3231bc.png",
     "static/media/ice.png": "/pokeshop/static/media/ice.1a9d5f7b.png",
@@ -22,8 +22,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.4c712dd4.js",
-    "static/js/2.38c31ae9.chunk.js",
+    "static/js/2.7ec8e396.chunk.js",
     "static/css/main.1c6f90c3.chunk.css",
-    "static/js/main.30349b42.chunk.js"
+    "static/js/main.2767b464.chunk.js"
   ]
 }
