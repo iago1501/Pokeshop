@@ -78,6 +78,7 @@ const PokeCard = ({ name, match, history }) => {
                 </PokeInfo>
                 <PokeBadges types={pokemon.types} />
             </InfoContainer>
+            <div>
             <EightbitButton
                 onClick={() =>
                     dispatch(
@@ -90,6 +91,7 @@ const PokeCard = ({ name, match, history }) => {
             >
                 Add to Cart
             </EightbitButton>
+            </div>
         </CardContainer>
     ) : (
         <Skeleton variant="rect" width={'100%'} height={'42vh'} />

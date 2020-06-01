@@ -49,7 +49,7 @@ export const EightbitButton = styled.a`
 export const StripeCheckoutButton = ({ price, onToken }) => {
     const priceForStripe = price * 100;
     const publishablekey = 'pk_test_V03q4pSNu9RMLOSFUgrfNIVf00pJIkXIrT';
-
+    //TODO CHANGE IMAGE!!!!!
 
     return (
         <StripeCheckout
