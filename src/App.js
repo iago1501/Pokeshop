@@ -11,7 +11,6 @@ const App = () => {
     return (
         <div>
             <Header />
-            <HashRouter basename="/">
                 <Switch>
                     <Route exact path="/" component={PokeShopHome} />
                     <Route
@@ -29,7 +28,6 @@ const App = () => {
                         <Redirect to={'/'} />
                     </Route>
                 </Switch>
-            </HashRouter>
         </div>
     );
 };
