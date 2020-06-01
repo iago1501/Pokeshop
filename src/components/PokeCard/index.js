@@ -62,7 +62,6 @@ const PokeCard = ({ name, match, history }) => {
             <HtmlTooltip
                 onClick={() => history.push(`${match.url}/details/${pokemon.id}`)}
                 title={<PressStart2P>Details</PressStart2P>}
-                placement="center"
             >
                 <CardImageContainer>
                     <CardImage src={pokemon.sprites.front_default} />

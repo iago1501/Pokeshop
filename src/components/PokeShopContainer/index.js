@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import { fetchPokemonStartAsync } from 'store/ducks/pokemon';
+import CheckoutSuccess from '../CheckoutSuccess'
 
 import PokeContainer from '../PokeContainer';
 import CheckoutContainer from '../CheckoutContainer';
 import PokeDetails from '../PokeDetails';
 
 const PokeShopContainer = ({ match }) => {
-    console.log('matchhhh', match);
 
     const dispatch = useDispatch();
 
@@ -18,6 +18,7 @@ const PokeShopContainer = ({ match }) => {
 
     return (
         <>
+            <Route exact path="/:type/shop/checkout/success" component={CheckoutSuccess}/>
             <Route exact path="/:type/shop"><Redirect to={`${match.url}/pokemon`} /></Route>
             <Route exact path="/:type/shop/pokemon" component={PokeContainer} />
             <Route

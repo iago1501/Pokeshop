@@ -1,11 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar } from '@material-ui/core';
+import { AppBar, Toolbar, Tooltip } from '@material-ui/core';
 import { PokeFontHollow } from '../CustomUI/Fonts';
 import MenuSearch from '../CustomUI/MenuSearch';
 import { typeFetchSelector, searchPokemon } from 'store/ducks/pokemon';
 import { useSelector, useDispatch } from 'react-redux';
+import { withRouter } from 'react-router';
 import Cart from '../Cart';
+import HomeIcon from '@material-ui/icons/Home';
 import { MENU_COLORS } from './data';
 
 const useStyles = (type) =>
@@ -30,7 +32,19 @@ const MenuAppBar = ({ history, match }) => {
         <div className={classes.root}>
             <AppBar position="fixed" className={classes.menu}>
                 <Toolbar>
-                    <PokeFontHollow>Poké{type} SHOP</PokeFontHollow>
+                    <Tooltip title="Back to Pokemon Type Selector">
+                        <HomeIcon style={{ cursor: 'pointer'}} onClick={() => history.push(`/`)} />
+                    </Tooltip>
+
+                    <Tooltip title="Back to shop page">
+                        <PokeFontHollow
+                            style={{ cursor: 'pointer', marginLeft: '50px'}}
+                            onClick={() => history.push(`/${type}/shop`)}
+                        >
+                            Poké{type} SHOP
+                        </PokeFontHollow>
+                    </Tooltip>
+
                     {type && (
                         <MenuSearch
                             onChange={(e) =>
@@ -46,4 +60,4 @@ const MenuAppBar = ({ history, match }) => {
     );
 };
 
-export default MenuAppBar;
+export default withRouter(MenuAppBar);

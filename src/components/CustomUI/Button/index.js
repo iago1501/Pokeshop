@@ -1,5 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
-
+import StripeCheckout from 'react-stripe-checkout';
 
 export const EightbitButton = styled.a`
     background: #00ce00;
@@ -44,3 +45,24 @@ export const EightbitButton = styled.a`
         border-right: 6px black solid;
     }
 `;
+
+export const StripeCheckoutButton = ({ price, onToken }) => {
+    const priceForStripe = price * 100;
+    const publishablekey = 'pk_test_V03q4pSNu9RMLOSFUgrfNIVf00pJIkXIrT';
+
+
+    return (
+        <StripeCheckout
+            label="Pay Now!"
+            name="Pokéshop"
+            billingAddress
+            shippingAddress
+            image="https://sendeyo.com/up/d/f3eb2117da"
+            description={`Your total is R$${price}`}
+            amount={priceForStripe}
+            panelLabel="Pay Now"
+            token={onToken}
+            stripeKey={publishablekey}
+        />
+    );
+};

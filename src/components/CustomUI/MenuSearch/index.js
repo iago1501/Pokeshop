@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
 import { fade, makeStyles } from '@material-ui/core/styles';
 
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const MenuSearch = ({onChange}) => {
+const MenuSearch = ({ onChange, history, match }) => {
     const classes = useStyles();
     return (
         <div className={classes.search}>
@@ -57,7 +58,8 @@ const MenuSearch = ({onChange}) => {
                 <SearchIcon />
             </div>
             <InputBase
-                onChange = {onChange}
+                onChange={onChange}
+                onKeyUp={(e) => e.which === 13 && history.push(`/${history.location.pathname.split('/')[1]}/shop`)}
                 placeholder="Search…"
                 classes={{
                     root: classes.inputRoot,
@@ -69,4 +71,4 @@ const MenuSearch = ({onChange}) => {
     );
 };
 
-export default MenuSearch
+export default withRouter(MenuSearch);

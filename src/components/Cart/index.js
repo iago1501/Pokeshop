@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { IconButton, Badge, Menu } from '@material-ui/core';
+import { IconButton, Badge, Menu, Tooltip } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import CartContainer from '../CartContainer';
 import { selectCartItemsCount } from 'store/ducks/cart';
@@ -20,17 +20,20 @@ const Cart = () => {
 
     return (
         <div>
-            <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-            >
-                <Badge badgeContent={cartQuantity} color="secondary">
-                    <ShoppingCartIcon />
-                </Badge>
-            </IconButton>
+            <Tooltip title="My cart">
+                <IconButton
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleMenu}
+                    color="inherit"
+                >
+                    <Badge badgeContent={cartQuantity} color="secondary">
+                        <ShoppingCartIcon />
+                    </Badge>
+                </IconButton>
+            </Tooltip>
+
             <Menu
                 anchorEl={open}
                 id="menu-appbar"

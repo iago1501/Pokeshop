@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { POKESHOP_TYPES } from './data';
+import { useDispatch } from 'react-redux';
+import { clearType } from 'store/ducks/pokemon';
 
 import styled from 'styled-components';
 
@@ -36,6 +38,13 @@ const HomeImageContainer = styled.div`
 `;
 
 const PokeShopHome = ({ match, history }) => {
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+        dispatch(clearType());
+    }, [dispatch]);
+
     return (
         <HomeDiv style={{ marginTop: '100px' }}>
             {POKESHOP_TYPES.types.map((type) => (

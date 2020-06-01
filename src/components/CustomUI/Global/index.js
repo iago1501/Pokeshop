@@ -31,6 +31,17 @@ const GlobalStyle = createGlobalStyle`
           bottom: 5px;
         }
       }
+
+      @keyframes blink {
+        0 {  height: 14px; top: 28px;}
+        5% {  height: 2px; top: 34px;}
+        10% {  height: 14px; top: 28px;}
+        40% {  height: 14px; top: 28px;}
+        50% {  height: 2px; top: 34px;}
+        55% {  height: 14px; top: 28px;}
+        100% {  height: 14px; top: 28px;}
+      }
+
 `;
 
 export default GlobalStyle;

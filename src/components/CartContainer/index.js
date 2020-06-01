@@ -16,10 +16,9 @@ export const CartItemsContainer = styled.div`
     overflow-y: auto;
 `;
 
-const CartContainer = ({ match, history }) => {
+const CartContainer = ({ match, history, handleClose }) => {
     const cart = useSelector(cartSelector);
     const total = useSelector(selectCartTotal).toFixed(2);
-    console.log('matchhhhhhh', match, history )
 
     return (
         <div style={{ textAlign: 'center', padding: '10px' }}>
@@ -43,7 +42,7 @@ const CartContainer = ({ match, history }) => {
             )}
             {cart.length > 0 && (
                 <EightbitButton
-                    onClick={() => history.push(`${match.url}cart`)}
+                    onClick={() => {history.push(`/${history.location.pathname.split('/')[1]}/shop/cart`); handleClose();}}
                 >
                     Go to Checkout!
                 </EightbitButton>

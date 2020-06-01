@@ -19,6 +19,7 @@ export const Types = {
     POKEMON_TO_SHOW: 'pokemon/POKEMON_TO_SHOW',
     SEARCH_POKEMON: 'pokemon/SEARCH_POKEMON',
     CLEAR_TO_SHOW: 'pokemon/CLEAR_TO_SHOW',
+    CLEAR_TYPE: 'pokemon/CLEAR_TYPE',
 };
 
 // Reducer
@@ -66,6 +67,8 @@ const pokemonReducer = (state = INITIAL_STATE, action) => {
                             .includes(action.payload.toLowerCase()) && pokeInfo
                 ),
             };
+        case Types.CLEAR_TYPE:
+            return {...INITIAL_STATE};
         default:
             return state;
     }
@@ -127,6 +130,10 @@ export const clearToShow = () => ({
     type: Types.CLEAR_TO_SHOW,
 });
 
+export const clearType = () => ({
+    type: Types.CLEAR_TYPE,
+});
+
 export const searchPokemon = (text) => {
     //TODO: Debounce might be good
     return (dispatch) => {
@@ -145,9 +152,10 @@ export const LoadMore = () => {
 export const getPokemonByIdOrName = (value) =>
     axios
         .get(`https://pokeapi.co/api/v2/pokemon/${value}`)
-        .then((res) => {return res.data})
+        .then((res) => {
+            return res.data;
+        })
         .catch((error) => error);
-
 
 export const fetchPokemonStartAsync = (type) => {
     return (dispatch) => {
