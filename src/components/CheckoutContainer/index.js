@@ -46,7 +46,8 @@ const CheckoutContainer = ({history}) => {
 
     const onToken = (token) => {
         dispatch(clearCart());
-        history.push(`/${history.location.pathname.split('/')[1]}/shop/checkout/success`);
+        // history.push(`/${history.location.pathname.split('/')[1]}/shop/checkout/success`);
+        history.push('/shop/checkout/success');
     };
 
     return (

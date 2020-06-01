@@ -42,7 +42,8 @@ const CartContainer = ({ match, history, handleClose }) => {
             )}
             {cart.length > 0 && (
                 <EightbitButton
-                    onClick={() => {history.push(`/${history.location.pathname.split('/')[1]}/shop/cart`); handleClose();}}
+                    // onClick={() => {history.push(`/${history.location.pathname.split('/')[1]}/shop/checkout`); handleClose();}}
+                    onClick={() => {history.push(`/shop/checkout`); handleClose();}}
                 >
                     Go to Checkout!
                 </EightbitButton>
