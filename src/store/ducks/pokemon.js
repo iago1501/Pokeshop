@@ -4,12 +4,14 @@ import axios from 'axios';
 
 export const pokemonSelector = (state) => state.pokemon.list;
 export const typeFetchSelector = (state) => state.pokemon.type;
+export const pokemonFetchError = (state) => state.pokemon.error;
 export const pokemonToShowSelector = (state) => state.pokemon.toShow;
 export const nextPokemonSliceToShow = (state) => state.pokemon.nextToShow;
 export const pokemonListSplittedSelector = (state) =>
     state.pokemon.filteredList.length > 0
         ? split(state.pokemon.filteredList, 18)
         : split(state.pokemon.list, 18);
+
 
 // Action Types
 
@@ -30,6 +32,7 @@ const INITIAL_STATE = {
     toShow: [],
     nextToShow: 0,
     filteredList: [],
+    error: false,
 };
 
 const pokemonReducer = (state = INITIAL_STATE, action) => {
@@ -39,6 +42,7 @@ const pokemonReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 list: action.payload.data.pokemon,
                 type: action.payload.data.name,
+                error: false,
             };
         case Types.POKEMON_TO_SHOW:
             return {
@@ -68,7 +72,10 @@ const pokemonReducer = (state = INITIAL_STATE, action) => {
                 ),
             };
         case Types.CLEAR_TYPE:
-            return {...INITIAL_STATE};
+            return { ...INITIAL_STATE };
+
+        case Types.FETCH_POKEMON_FAILURE:
+            return { ...state, error: true };
         default:
             return state;
     }
@@ -115,6 +122,10 @@ const getPokemonToShow = (fullList, filteredList, toShow, nextToShow) => {
 export const fetchPokemonSuccess = (pokeCollection) => ({
     type: Types.FETCH_POKEMON_SUCCESS,
     payload: pokeCollection,
+});
+
+export const fetchPokemonFailure = (error) => ({
+    type: Types.FETCH_POKEMON_FAILURE,
 });
 
 export const pokemonToShow = () => ({
@@ -165,7 +176,7 @@ export const fetchPokemonStartAsync = (type) => {
                 dispatch(fetchPokemonSuccess(res));
                 dispatch(pokemonToShow());
             })
-            .catch((error) => dispatch(fetchPokemonSuccess(error)));
+            .catch((error) => dispatch(fetchPokemonFailure(error)));
     };
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import StripeCheckout from 'react-stripe-checkout';
+import StripeButtonImage from 'assets/images/checkoutimage.jpg'
 
 export const EightbitButton = styled.a`
     background: #00ce00;
@@ -57,7 +58,7 @@ export const StripeCheckoutButton = ({ price, onToken }) => {
             name="Pokéshop"
             billingAddress
             shippingAddress
-            image="https://sendeyo.com/up/d/f3eb2117da"
+            image={StripeButtonImage}
             description={`Your total is R$${price}`}
             amount={priceForStripe}
             panelLabel="Pay Now"

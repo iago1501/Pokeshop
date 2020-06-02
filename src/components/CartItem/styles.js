@@ -21,6 +21,7 @@ export const PokemonCartInfos = styled.div`
     & > span {
         font-size: 12px;
         font-weight: 100;
+        margin-top: 3px;
     }
     & > p {
         font-size: 15px;

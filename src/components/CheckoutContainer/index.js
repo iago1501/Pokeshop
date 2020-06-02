@@ -6,6 +6,7 @@ import { cartSelector, selectCartTotal, clearCart } from 'store/ducks/cart';
 import CheckoutItem from '../CheckoutItem';
 import { StripeCheckoutButton } from '../CustomUI/Button';
 import { withRouter } from 'react-router';
+import { Helmet } from 'react-helmet';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -50,68 +51,85 @@ const CheckoutContainer = ({ history, match }) => {
     };
 
     return (
-        <div className={classes.root}>
-            <Grid container spacing={3} xs={12} md={12}>
-                <Grid item md={12} xs={12} className={classes.externalGrid}>
-                    <Paper className={classes.paper}>
-                        <Hidden only="xs">
-                            <Grid container md={12} className={classes.header}>
-                                <Grid item md={3} display={{ xs: 'none' }}>
-                                    Pokémon
+        <>
+            <Helmet>
+                <title>PokéShop - Checkout</title>
+                <meta
+                    name="description"
+                    content={`PokéShop checkout page, finish your payment `}
+                />
+            </Helmet>
+            <div className={classes.root}>
+                <Grid container spacing={3} xs={12} md={12}>
+                    <Grid item md={12} xs={12} className={classes.externalGrid}>
+                        <Paper className={classes.paper}>
+                            <Hidden only="xs">
+                                <Grid
+                                    container
+                                    md={12}
+                                    className={classes.header}
+                                >
+                                    <Grid item md={3} display={{ xs: 'none' }}>
+                                        Pokémon
+                                    </Grid>
+                                    <Grid item md={3}>
+                                        Name
+                                    </Grid>
+                                    <Grid item md={2}>
+                                        Quantity
+                                    </Grid>
+                                    <Grid item md={3}>
+                                        Price
+                                    </Grid>
+                                    <Grid item md={1}>
+                                        Remove
+                                    </Grid>
                                 </Grid>
-                                <Grid item md={3}>
-                                    Name
+                            </Hidden>
+                            {cart.length > 0 ? (
+                                cart.map((pokemon) => (
+                                    <CheckoutItem pokemon={pokemon} />
+                                ))
+                            ) : (
+                                <p>Your cart is empty =/</p>
+                            )}
+                            <Grid container md={12} className={classes.footer}>
+                                <Grid item md={12}>
+                                    Total: R$ {total}
                                 </Grid>
-                                <Grid item md={2}>
-                                    Quantity
-                                </Grid>
-                                <Grid item md={3}>
-                                    Price
-                                </Grid>
-                                <Grid item md={1}>
-                                    Remove
+                                <Grid
+                                    item
+                                    md={12}
+                                    className={classes.stripeButton}
+                                >
+                                    {cart.length > 0 && (
+                                        <StripeCheckoutButton
+                                            price={total}
+                                            onToken={onToken}
+                                        />
+                                    )}
+                                    {cart.length > 0 && (
+                                        <div
+                                            style={{
+                                                color: 'red',
+                                                fontSize: '12px',
+                                                margin: '10px',
+                                            }}
+                                        >
+                                            *Please use the following test
+                                            credit card for payments
+                                            <br />
+                                            4242 4242 4242 4242 - Exp: 01/21 -
+                                            CVV:123
+                                        </div>
+                                    )}
                                 </Grid>
                             </Grid>
-                        </Hidden>
-                        {cart.length > 0 ? (
-                            cart.map((pokemon) => (
-                                <CheckoutItem pokemon={pokemon} />
-                            ))
-                        ) : (
-                            <p>Your cart is empty =/</p>
-                        )}
-                        <Grid container md={12} className={classes.footer}>
-                            <Grid item md={12}>
-                                Total: R$ {total}
-                            </Grid>
-                            <Grid item md={12} className={classes.stripeButton}>
-                                {cart.length > 0 && (
-                                    <StripeCheckoutButton
-                                        price={total}
-                                        onToken={onToken}
-                                    />
-                                )}
-                                {cart.length > 0 && (
-                                    <div
-                                        style={{
-                                            color: 'red',
-                                            fontSize: '12px',
-                                            margin: '10px',
-                                        }}
-                                    >
-                                        *Please use the following test credit
-                                        card for payments
-                                        <br />
-                                        4242 4242 4242 4242 - Exp: 01/21 -
-                                        CVV:123
-                                    </div>
-                                )}
-                            </Grid>
-                        </Grid>
-                    </Paper>
+                        </Paper>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </div>
+            </div>
+        </>
     );
 };
 

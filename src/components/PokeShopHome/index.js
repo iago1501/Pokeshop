@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { POKESHOP_TYPES } from './data';
 import { useDispatch } from 'react-redux';
 import { clearType } from 'store/ducks/pokemon';
+import { Helmet } from 'react-helmet';
 
 import styled from 'styled-components';
 
@@ -53,18 +54,21 @@ const PokeShopHome = ({ match, history }) => {
     }, [dispatch]);
 
     return (
-        <HomeDiv style={{ marginTop: '100px' }}>
-            {POKESHOP_TYPES.types.map((type) => (
-                <HomeImageContainer>
-                    <HomeImageDiv
-                        imageUrl={type.imageUrl}
-                        onClick={() =>
-                            history.push(`${match.url}${type.linkUrl}`)
-                        }
-                    />
-                </HomeImageContainer>
-            ))}
-        </HomeDiv>
+        <>
+            <Helmet title="PokéShop - Home" />
+            <HomeDiv style={{ marginTop: '100px' }}>
+                {POKESHOP_TYPES.types.map((type) => (
+                    <HomeImageContainer>
+                        <HomeImageDiv
+                            imageUrl={type.imageUrl}
+                            onClick={() =>
+                                history.push(`${match.url}${type.linkUrl}`)
+                            }
+                        />
+                    </HomeImageContainer>
+                ))}
+            </HomeDiv>
+        </>
     );
 };
 
