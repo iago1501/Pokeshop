@@ -66,4 +66,5 @@ $ yarn storybook
         - Fazer algumas configurações a mais para versão mobile;
         - Acrescentar testes E2E e testes unitários;
         - Acrescentar melhorias de UX e UI para o usuário;
+        - Autenticação de usuário;
         - etc...
