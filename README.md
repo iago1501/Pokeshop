@@ -6,6 +6,8 @@
 
 > Desafio proposto pela empresa B2W
 
+> O Projeto foi feito com React, Redux (utilizando do Ducks Pattern) e Axios para as requisições de servidor;
+
 
 [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)]
 
@@ -42,6 +44,24 @@ $ yarn start
 ```shell
 $ yarn storybook
 ```
+
+### Tecnologias Utilizadas
+
+- React;
+- Redux (Gerenciar Estados);
+- Storybook;
+- Styled Components;
+- Material UI;
+- React Helmet;
+- Redux Persist;
+- GH Pages;
+- Lazy Load (InfiniteScroll);
+- Ducks;
+- Stripe (Pagamentos);
+- Axios;
+- Media Queries;
+
+
 
 ## Desenvolvedor
 
