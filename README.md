@@ -60,6 +60,7 @@ $ yarn storybook
 - Stripe (Pagamentos);
 - Axios;
 - Media Queries;
+- Grids e Flexboxs;
 
 
 
