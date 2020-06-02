@@ -6,8 +6,7 @@
 
 > Desafio proposto pela empresa B2W
 
--
-[![npm Version](https://img.shields.io/npm/v/react-helmet.svg?style=flat-square)](https://www.npmjs.org/package/react-helmet)
+
 [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)]
 
 
