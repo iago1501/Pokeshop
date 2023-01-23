@@ -2,7 +2,7 @@
   "name": "pokeshop",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://iago1501.github.io/pokeshop",
+  "homepage": "https://iago1501.github.io/Pokeshop",
   "dependencies": {
     "@material-ui/core": "^4.10.0",
     "@material-ui/icons": "^4.9.1",
