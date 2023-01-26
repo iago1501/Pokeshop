@@ -74,7 +74,7 @@ const PokeDetails = ({ match }) => {
                             <PokeBaseInfo>
                                 <BaseInfoHeader>
                                     <PressStart2P>
-                                        > {pokemon.name.toUpperCase()}
+                                        {'>'} {pokemon.name.toUpperCase()}
                                     </PressStart2P>
                                     <PokeBadges types={pokemon.types} />
                                 </BaseInfoHeader>

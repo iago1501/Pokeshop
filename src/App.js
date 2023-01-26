@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Header from 'components/Header';
-import PokeShopHome from 'components/PokeShopHome';
+import PokeShopHome from 'pages/PokeShopHome';
 import PokeShopContainer from 'components/PokeShopContainer';
 import CheckoutContainer from 'components/CheckoutContainer';
 import CheckoutSuccess from 'components/CheckoutSuccess';
@@ -25,7 +25,7 @@ const App = () => {
                 />
                 <Route path="/:type/shop" component={PokeShopContainer} />
                 <Route exact path="/shop">
-                    <Redirect to={'/'} />
+                    <Redirect to="/" />
                 </Route>
             </Switch>
         </div>
