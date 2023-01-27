@@ -1,4 +1,4 @@
-import fire from '../../assets/images/fire.png'
+import fire from '../../assets/images/fire.png';
 import water from '../../assets/images/water.png';
 import normal from '../../assets/images/normal.png';
 import fairy from '../../assets/images/fairy.png';

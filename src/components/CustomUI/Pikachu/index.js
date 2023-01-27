@@ -3,40 +3,39 @@ import './styles.css';
 
 const Pikachu = ({text}) => (
     <>
-
-        <div class="pikachu-wrapper pika-div">
+        <div className="pikachu-wrapper pika-div">
             <h2 className="pika-h2">{text}</h2>
 
-            <div class="pikachu pika-div">
-                <div class="head pika-div">
-                    <div class="ears left brown pika-div">
-                        <div class="ears-inside yellow pika-div"></div>
+            <div className="pikachu pika-div">
+                <div className="head pika-div">
+                    <div className="ears left brown pika-div">
+                        <div className="ears-inside yellow pika-div" />
                     </div>
-                    <div class="ears right brown pika-div">
-                        <div class="ears-inside yellow pika-div"></div>
+                    <div className="ears right brown pika-div">
+                        <div className="ears-inside yellow pika-div" />
                     </div>
 
-                    <div class="face yellow pika-div">
-                        <span class="eye left brown pika-span"></span>
-                        <span class="eye right brown pika-span"></span>
-                        <span class="mouth pika-span">w</span>
+                    <div className="face yellow pika-div">
+                        <span className="eye left brown pika-span" />
+                        <span className="eye right brown pika-span" />
+                        <span className="mouth pika-span">w</span>
 
-                        <span class="cachete left pika-span"></span>
-                        <span class="cachete right pika-span"></span>
+                        <span className="cachete left pika-span" />
+                        <span className="cachete right pika-span" />
                     </div>
                 </div>
 
-                <div class="body yellow pika-div">
-                    <div class="heart pika-div"></div>
+                <div className="body yellow pika-div">
+                    <div className="heart pika-div" />
 
-                    <div class="paw left yellow pika-div"></div>
-                    <div class="paw right yellow pika-div"></div>
+                    <div className="paw left yellow pika-div" />
+                    <div className="paw right yellow pika-div" />
                 </div>
 
-                <div class="leg left yellow-dark pika-div"></div>
-                <div class="leg right yellow-dark pika-div"></div>
+                <div className="leg left yellow-dark pika-div" />
+                <div className="leg right yellow-dark pika-div" />
 
-                <div class="tail yellow-dark pika-div"></div>
+                <div className="tail yellow-dark pika-div" />
             </div>
         </div>
     </>

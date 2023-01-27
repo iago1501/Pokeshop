@@ -33,7 +33,7 @@ export const PokemonCartInfos = styled.div`
 
 export const PokemonCartName = styled(PressStart2P)`
     font-size: 10px;
-`
+`;
 
 export const ButtonContainer = styled.div`
     display: flex;

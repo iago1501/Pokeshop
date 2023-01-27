@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { getPokemonByIdOrName } from 'store/ducks/pokemon';
+import { useState, useEffect } from 'react';
+import { getPokemonByIdOrName, Pokemon, Sprites } from 'store/ducks/pokemon';
 import { addPokemon } from 'store/ducks/cart';
+import { useDispatch } from 'react-redux';
+import { Helmet } from 'react-helmet';
+import { useParams } from 'react-router-dom';
 import { PressStart2P } from '../CustomUI/Fonts';
 import PokeBadges from '../PokeBadges';
 import PokeStatusContainer from '../PokeStatusContainer';
 import { EightbitButton } from '../CustomUI/Button';
-import { useDispatch } from 'react-redux';
-import { Helmet } from 'react-helmet';
-// import Button from '@material-ui/core/Button';
 
 import {
     PokeDetailsContainer,
@@ -21,35 +21,47 @@ import {
     ActionDiv,
 } from './style';
 
-const PokeDetails = ({ match }) => {
-    const [pokemon, setPokemon] = useState();
+type PokeDetailsParams = {
+    id: string;
+};
+
+function PokeDetails() {
+    const [pokemon, setPokemon] = useState<Pokemon>();
+    const { id } = useParams<PokeDetailsParams>();
     const [pokemonSprite, setPokemonSprite] = useState('front_default');
     const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getPokemonByIdOrName(match.params.id);
+            const result = await getPokemonByIdOrName(id);
             setPokemon(result);
         };
 
         fetchData();
-    }, [match.params.id]);
+    }, [id]);
 
-    const getPrice = (height, weight) => ((height + weight) / 10).toFixed(2);
+    const getPrice = (height: number, weight: number) =>
+        ((height + weight) / 10).toFixed(2);
 
-    const changeSprite = () => {
-        pokemonSprite === 'front_default'
-            ? setPokemonSprite('back_default')
-            : setPokemonSprite('front_default');
+    function changeSprite() {
+        if (pokemonSprite === 'front_default') {
+            return setPokemonSprite('back_default');
+        }
+        return setPokemonSprite('front_default');
+    }
+
+    const capitalize = (s: any) => {
+        if (typeof s !== 'string') return '';
+        return s.charAt(0).toUpperCase() + s.slice(1);
     };
 
-    const capitalize = (s) => {
-        if (typeof s !== 'string') return ''
-        return s.charAt(0).toUpperCase() + s.slice(1)
-      }
+    if (!pokemon) {
+        // TODO: Fetch Error
+        return <div>Loading...</div>;
+    }
 
     return (
-        !!pokemon && (
+        pokemon && (
             <>
                 <Helmet>
                     <title>PokéShop - {capitalize(pokemon.name)} Details</title>
@@ -62,13 +74,19 @@ const PokeDetails = ({ match }) => {
                 <PokeDetailsContainer>
                     <PokeWrapper>
                         <PomeImageContainer>
-                            <PressStart2P onClick={changeSprite}>
-                                &lt;
-                            </PressStart2P>
-                            <PokeImage src={pokemon.sprites[pokemonSprite]} />
-                            <PressStart2P onClick={changeSprite}>
-                                &gt;
-                            </PressStart2P>
+                            <button type="button" onClick={changeSprite}>
+                                <PressStart2P>&lt;</PressStart2P>
+                            </button>
+                            <PokeImage
+                                src={
+                                    pokemon.sprites[
+                                        pokemonSprite as keyof Sprites
+                                    ]
+                                }
+                            />
+                            <button type="button" onClick={changeSprite}>
+                                <PressStart2P>&gt;</PressStart2P>
+                            </button>
                         </PomeImageContainer>
                         <PokeBaseInfoContainer>
                             <PokeBaseInfo>
@@ -114,6 +132,6 @@ const PokeDetails = ({ match }) => {
             </>
         )
     );
-};
+}
 
 export default PokeDetails;

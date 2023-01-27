@@ -4,5 +4,5 @@ export const MENU_COLORS = {
     normal: '#737373',
     fairy: '#920073',
     ice: '#004c9a',
-    psychic: '#3c003c'
-}
+    psychic: '#3c003c',
+};

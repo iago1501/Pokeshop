@@ -12,7 +12,7 @@ export const HomeDiv = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     justify-content: center;
-    margin: 0 7.5px 15px;
+    margin: 100px 7.5px 15px;
     grid-gap: 20px;
 
     @media (max-width: 700px) {

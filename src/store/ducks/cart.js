@@ -31,41 +31,6 @@ export const Types = {
     CLEAR_CART: 'CART/CLEAR_CART'
 };
 
-// Reducer
-
-const INITIAL_STATE = {
-    cartItems: [],
-};
-
-const cartReducer = (state = INITIAL_STATE, action) => {
-    switch (action.type) {
-        case Types.ADD_POKEMON:
-            return {
-                ...state,
-                cartItems: addPokemonToCart(state.cartItems, action.payload),
-            };
-        case Types.REMOVE_POKEMON:
-            return {
-                ...state,
-                cartItems: removePokemonFromCart(
-                    state.cartItems,
-                    action.payload
-                ),
-            };
-        case Types.CLEAR_POKEMON_FROM_CART:
-            return {
-                ...state,
-                cartItems: state.cartItems.filter(
-                    (cartItem) => cartItem.id !== action.payload
-                ),
-            };
-        case Types.CLEAR_CART:
-            return {...INITIAL_STATE}
-        default:
-            return state;
-    }
-};
-
 // Action Creators
 
 export const addPokemon = (pokemon, price) => ({
@@ -87,7 +52,7 @@ export const clearCart = () => ({
     type: Types.CLEAR_CART,
 });
 
-//Utils
+// Utils
 export const addPokemonToCart = (cartItems, pokemonToAdd) => {
     const { name, height, weight, id, types, sprites, price } = pokemonToAdd;
 
@@ -123,6 +88,41 @@ export const removePokemonFromCart = (cartItems, PokemonToRemove) => {
             ? { ...cartItem, quantity: cartItem.quantity - 1 }
             : cartItem
     );
+};
+
+// Reducer
+
+const INITIAL_STATE = {
+    cartItems: [],
+};
+
+const cartReducer = (state = INITIAL_STATE, action) => {
+    switch (action.type) {
+        case Types.ADD_POKEMON:
+            return {
+                ...state,
+                cartItems: addPokemonToCart(state.cartItems, action.payload),
+            };
+        case Types.REMOVE_POKEMON:
+            return {
+                ...state,
+                cartItems: removePokemonFromCart(
+                    state.cartItems,
+                    action.payload
+                ),
+            };
+        case Types.CLEAR_POKEMON_FROM_CART:
+            return {
+                ...state,
+                cartItems: state.cartItems.filter(
+                    (cartItem) => cartItem.id !== action.payload
+                ),
+            };
+        case Types.CLEAR_CART:
+            return { ...INITIAL_STATE };
+        default:
+            return state;
+    }
 };
 
 export default cartReducer;

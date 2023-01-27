@@ -3,10 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Hidden } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { cartSelector, selectCartTotal, clearCart } from 'store/ducks/cart';
+import { Helmet } from 'react-helmet';
+import { withRouter } from 'react-router';
 import CheckoutItem from '../CheckoutItem';
 import { StripeCheckoutButton } from '../CustomUI/Button';
-import { withRouter } from 'react-router';
-import { Helmet } from 'react-helmet';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,7 +45,7 @@ const CheckoutContainer = ({ history, match }) => {
     const total = useSelector(selectCartTotal).toFixed(2);
     const dispatch = useDispatch();
 
-    const onToken = (token) => {
+    const onToken = () => {
         dispatch(clearCart());
         history.push(`${match.url}/success`);
     };

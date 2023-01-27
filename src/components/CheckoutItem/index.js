@@ -1,11 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Hidden } from '@material-ui/core';
-import { PressStart2P } from '../CustomUI/Fonts';
 import { useDispatch } from 'react-redux';
 import { removePokemon, addPokemon, clearPokemon } from 'store/ducks/cart';
+import { PressStart2P } from '../CustomUI/Fonts';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     item: {
         alignItems: 'center',
     },
@@ -68,7 +68,7 @@ const CheckoutItem = ({ pokemon }) => {
                 <Grid
                     item
                     md={1}
-                    xs={'none'}
+                    xs="none"
                     onClick={() => dispatch(clearPokemon(id))}
                 >
                     <PressStart2P className={classes.actionIcon}>

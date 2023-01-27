@@ -1,6 +1,5 @@
-import React from 'react';
-import Pikachu from '../CustomUI/Pikachu';
 import { Helmet } from 'react-helmet';
+import Pikachu from '../CustomUI/Pikachu';
 
 const CheckoutSuccess = ({ history }) => (
     <>
@@ -16,7 +15,7 @@ const CheckoutSuccess = ({ history }) => (
                 &gt; Back to Home &lt;
             </p>
         </div>
-        <Pikachu text={'You Catch` Them!'} />
+        <Pikachu text="You Catch` Them!" />
     </>
 );
 

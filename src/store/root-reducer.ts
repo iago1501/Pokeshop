@@ -3,7 +3,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import pokemonReducer from './ducks/pokemon';
-import cartReducer from './ducks/cart'
+import cartReducer from './ducks/cart';
 
 const persistConfig = {
     key: 'root',
@@ -15,5 +15,7 @@ const rootReducer = combineReducers({
     pokemon: pokemonReducer,
     cart: cartReducer,
 });
+
+export type RootState = ReturnType<typeof rootReducer>;
 
 export default persistReducer(persistConfig, rootReducer);

@@ -17,7 +17,7 @@ const PokeShopHome = ({ match, history }: RouteComponentProps) => {
     return (
         <>
             <Helmet title="PokéShop - Home" />
-            <HomeDiv style={{ marginTop: '100px' }}>
+            <HomeDiv>
                 {POKESHOP_TYPES.map((type) => (
                     <HomeImageContainer>
                         <HomeImageDiv

@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
-import { getPokemonByIdOrName } from 'store/ducks/pokemon';
+import { getPokemonByIdOrName, typeFetchSelector } from 'store/ducks/pokemon';
 
 import { addPokemon } from 'store/ducks/cart';
-import { typeFetchSelector } from 'store/ducks/pokemon';
 import { Skeleton } from '@material-ui/lab';
 
-import { EightbitButton } from '../CustomUI/Button';
 import { PressStart2P } from 'components/CustomUI/Fonts';
 import Tooltip from '@material-ui/core/Tooltip';
+import { EightbitButton } from '../CustomUI/Button';
 import PokeBadges from '../PokeBadges';
 
 import {
@@ -23,9 +22,9 @@ import {
     PokeName,
     PokeSizes,
     ButtonContainer,
-} from './styles.js';
+} from './styles';
 
-const HtmlTooltip = withStyles((theme) => ({
+const HtmlTooltip = withStyles(() => ({
     tooltip: {
         backgroundColor: 'rgba(0,0,0,0.5)',
         color: 'white',
@@ -96,7 +95,7 @@ const PokeCard = ({ name, match, history }) => {
             </ButtonContainer>
         </CardContainer>
     ) : (
-        <Skeleton variant="rect" width={'100%'} height={'42vh'} />
+        <Skeleton variant="rect" width="100%" height="42vh" />
     );
 };
 

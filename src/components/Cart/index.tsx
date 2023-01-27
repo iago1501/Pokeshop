@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { IconButton, Badge, Menu, Tooltip } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import CartContainer from '../CartContainer';
+
 import { selectCartItemsCount } from 'store/ducks/cart';
+import CartContainer from '../CartContainer';
 
 const Cart = () => {
     const [open, setOpen] = useState(false);
     const cartQuantity = useSelector(selectCartItemsCount);
 
-    const handleMenu = (event) => {
-        setOpen(!!event.currentTarget);
+    const handleMenu = () => {
+        // eslint-disable-next-line no-console
+        // console.log(event);
+        setOpen(!open);
     };
 
     const handleClose = () => {
@@ -35,7 +38,7 @@ const Cart = () => {
             </Tooltip>
 
             <Menu
-                anchorEl={open}
+                // anchorEl={open}
                 id="menu-appbar"
                 open={open}
                 anchorOrigin={{
@@ -49,7 +52,7 @@ const Cart = () => {
                 }}
                 onClose={handleClose}
             >
-                <CartContainer handleClose={handleClose} />
+                {/* <CartContainer handleClose={handleClose} /> */}
             </Menu>
         </div>
     );

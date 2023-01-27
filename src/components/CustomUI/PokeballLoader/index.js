@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import React from 'react';
 
 export const Pokeball = styled.div`
     width: 20px;
@@ -66,8 +65,14 @@ export const Pokeball = styled.div`
 export const PokeballDiv = styled.div`
     display: inline-flex;
     margin-top: 20px;
-`
+`;
 
-const PokeballLoader = () => <PokeballDiv><Pokeball /><Pokeball /><Pokeball /></PokeballDiv>;
+const PokeballLoader = () => (
+    <PokeballDiv>
+        <Pokeball />
+        <Pokeball />
+        <Pokeball />
+    </PokeballDiv>
+);
 
-export default PokeballLoader
+export default PokeballLoader;

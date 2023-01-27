@@ -1,20 +1,14 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { cartSelector, selectCartTotal } from 'store/ducks/cart';
-import CartItem from '../CartItem';
-import styled from 'styled-components';
-import { EightbitButton } from '../CustomUI/Button';
+import { RouteComponentProps } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import CartItem from '../CartItem';
+import { EightbitButton } from '../CustomUI/Button';
+import { CartItemsContainer } from './styles';
 
-export const CartItemsContainer = styled.div`
-    height: auto;
-    max-height: 300px;
-    width: 260px;
-    top: 50px;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-`;
+// interface CartContainerProps extends RouteComponentProps {
+//     handleClose: () => void;
+// }
 
 const CartContainer = ({ match, history, handleClose }) => {
     const cart = useSelector(cartSelector);
@@ -43,7 +37,10 @@ const CartContainer = ({ match, history, handleClose }) => {
             {cart.length > 0 && (
                 <EightbitButton
                     // onClick={() => {history.push(`/${history.location.pathname.split('/')[1]}/shop/checkout`); handleClose();}}
-                    onClick={() => {history.push(`${match.url}shop/checkout`); handleClose();}}
+                    onClick={() => {
+                        history.push(`${match.url}shop/checkout`);
+                        handleClose();
+                    }}
                 >
                     Go to Checkout!
                 </EightbitButton>

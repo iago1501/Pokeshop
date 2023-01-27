@@ -1,7 +1,5 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
-import PokeCard from '../PokeCard';
 import PokeballLoader from 'components/CustomUI/PokeballLoader';
 import PikachuBalloon from 'components/CustomUI/PikachuBalloon';
 
@@ -16,11 +14,12 @@ import {
     LoadMore,
     typeFetchSelector,
     pokemonFetchError,
-} from 'store/ducks/pokemon.js';
+} from 'store/ducks/pokemon';
 
 import { useDispatch, useSelector } from 'react-redux';
+import PokeCard from '../PokeCard';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
         flexGrow: 1,
         margin: '10px',
@@ -59,11 +58,11 @@ const PokeContainer = () => {
                 </Helmet>
                 <InfiniteScroll
                     style={{ overflow: 'unset' }}
-                    dataLength={pokemonToShow.length} //This is important field to render the next data
+                    dataLength={pokemonToShow.length} // This is important field to render the next data
                     next={onLoadMore}
-                    hasMore={next < pokemonListSplitted.length ? true : false}
+                    hasMore={next < pokemonListSplitted.length}
                     loader={<PokeballLoader />}
-                    endMessage={<Grid container spacing={2}></Grid>}
+                    endMessage={<Grid container spacing={2} />}
                 >
                     <Grid container spacing={2}>
                         {pokemonToShow.map(({ pokemon: { name, url } }) => (
@@ -76,7 +75,7 @@ const PokeContainer = () => {
             </div>
         )
     ) : (
-        <PikachuBalloon text={'Someting went wrong on fetch =('} />
+        <PikachuBalloon text="Someting went wrong on fetch =(" />
     );
 };
 

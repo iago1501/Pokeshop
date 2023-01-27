@@ -11,7 +11,7 @@ const TYPES_BACKGROUND = {
     electric: 'rgb(243, 208, 37)',
     fairy: 'rgb(235, 143, 241)',
     ice: 'rgb(104,144,240)',
-    psychic: 'rgb(130, 55, 130)'
+    psychic: 'rgb(130, 55, 130)',
 }
 
 export const CardContainer = styled.div`
@@ -22,7 +22,7 @@ export const CardContainer = styled.div`
     width: 100%;
     height: auto;
     min-height: 300px;
-    background-color: ${props => TYPES_BACKGROUND[props.type]};
+    background-color: ${(props) => TYPES_BACKGROUND[props.type]};
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -45,7 +45,7 @@ export const CardImageContainer = styled.div`
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
     &:hover {
-        background-color: rgba(0,0,0,0.3);
+        background-color: rgba(0, 0, 0, 0.3);
     }
 `;
 
@@ -98,4 +98,4 @@ export const ButtonContainer = styled.div`
     @media (max-width: 700px) {
         margin-top: 2vh;
     }
-`
+`;
