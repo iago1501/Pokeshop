@@ -4,6 +4,7 @@ import { AnyAction } from 'redux';
 import { RootState } from '../root-reducer';
 import { Pokemon } from './pokemon';
 
+// Types
 export interface PokemonCart extends Pokemon {
     quantity: number;
     price: number;
@@ -13,33 +14,11 @@ type INITIAL_STATE_TYPES = {
     cartItems: PokemonCart[];
 };
 
-// Reducer
+// CONSTs
 
 const INITIAL_STATE: INITIAL_STATE_TYPES = {
     cartItems: [],
 };
-
-// Selectors
-
-export const cartSelector = (state: RootState) => state.cart.cartItems;
-
-export const selectCartItemsCount = createSelector(
-    [cartSelector],
-    (cartItems) =>
-        cartItems.reduce(
-            (accumulatedQuantity, cartItem) =>
-                accumulatedQuantity + cartItem.quantity,
-            0
-        )
-);
-
-export const selectCartTotal = createSelector([cartSelector], (cartItems) =>
-    cartItems.reduce(
-        (accumulatedPrice, cartItem) =>
-            accumulatedPrice + cartItem.quantity * cartItem.price,
-        0
-    )
-);
 
 // Action Types
 
@@ -118,6 +97,30 @@ export const removePokemonFromCart = (
             : cartItem
     );
 };
+
+// Selectors
+
+export const cartSelector = (state: RootState) => state.cart.cartItems;
+
+export const selectCartItemsCount = createSelector(
+    [cartSelector],
+    (cartItems) =>
+        cartItems.reduce(
+            (accumulatedQuantity, cartItem) =>
+                accumulatedQuantity + cartItem.quantity,
+            0
+        )
+);
+
+export const selectCartTotal = createSelector([cartSelector], (cartItems) =>
+    cartItems.reduce(
+        (accumulatedPrice, cartItem) =>
+            accumulatedPrice + cartItem.quantity * cartItem.price,
+        0
+    )
+);
+
+// Reducer
 
 const cartReducer = (state = INITIAL_STATE, action: AnyAction) => {
     switch (action.type) {

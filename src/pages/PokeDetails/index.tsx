@@ -4,6 +4,7 @@ import { addPokemon } from 'store/ducks/cart';
 import { useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
+import { capitalize } from 'utils';
 import { PokeBadges } from '../../components/Pokemon/PokeBadges';
 import { PressStart2P } from '../../components/CustomUI/Fonts';
 import { PokeStatusContainer } from '../../components/Pokemon/PokeStatusContainer';
@@ -49,11 +50,6 @@ export function PokeDetails() {
         }
         return setPokemonSprite('front_default');
     }
-
-    const capitalize = (s: unknown) => {
-        if (typeof s !== 'string') return '';
-        return s.charAt(0).toUpperCase() + s.slice(1);
-    };
 
     if (!pokemon) {
         // TODO: Fetch Error

@@ -6,3 +6,8 @@ export const split = (array: Iterable<any>, n: number) => {
     }
     return res;
 };
+
+export const capitalize = (s: unknown) => {
+    if (typeof s !== 'string') return '';
+    return s.charAt(0).toUpperCase() + s.slice(1);
+};
