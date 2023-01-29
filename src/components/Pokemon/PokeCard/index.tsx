@@ -14,8 +14,8 @@ import { Skeleton } from '@material-ui/lab';
 
 import { PressStart2P } from 'components/CustomUI/Fonts';
 import Tooltip from '@material-ui/core/Tooltip';
-import { EightbitButton } from '../CustomUI/Button';
-import PokeBadges from '../PokeBadges';
+import { EightbitButton } from '../../CustomUI/Button';
+import { PokeBadges } from '../PokeBadges';
 
 import {
     CardContainer,

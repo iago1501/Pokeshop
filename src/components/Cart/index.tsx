@@ -5,7 +5,7 @@ import { IconButton, Badge, Menu, Tooltip } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import { selectCartItemsCount } from 'store/ducks/cart';
-import CartContainer from 'components/CartContainer';
+import CartContainer from 'components/Cart/CartContainer';
 
 const Cart = () => {
     const [open, setOpen] = useState(false);

@@ -2,7 +2,7 @@ import React from 'react';
 import GlobalStyle from 'components/CustomUI/Global';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { addDecorator } from '@storybook/react';
-import { Badge } from 'components/CustomUI/Badges';
+import { Badge } from 'components/CustomUI/Badge';
 
 export default { title: 'Badges' };
 

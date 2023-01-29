@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet';
 import { RouteComponentProps } from 'react-router-dom';
-import Pikachu from '../CustomUI/Pikachu';
+import Pikachu from '../../CustomUI/Pikachu';
 
 const CheckoutSuccess = ({ history }: RouteComponentProps) => (
     <>

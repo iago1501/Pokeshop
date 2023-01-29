@@ -8,16 +8,16 @@ import {
 } from 'react-router-dom';
 import { fetchPokemonStartAsync } from 'store/ducks/pokemon';
 
-import PokeContainer from '../PokeContainer';
-import PokeDetails from '../PokeDetails';
+import { PokeSearch } from '../../pages/PokeSearch';
+import { PokeDetails } from '../../pages/PokeDetails';
 
-type PokeShopContainerParams = {
+type PokeShopParams = {
     type: string;
 };
 
-const PokeShopContainer = ({ match }: RouteComponentProps) => {
+export const PokeShop = ({ match }: RouteComponentProps) => {
     const dispatch = useDispatch();
-    const { type } = useParams<PokeShopContainerParams>();
+    const { type } = useParams<PokeShopParams>();
 
     useEffect(() => {
         dispatch(fetchPokemonStartAsync(type));
@@ -29,7 +29,7 @@ const PokeShopContainer = ({ match }: RouteComponentProps) => {
                 <Redirect to={`${match.url}/pokemon`} />
             </Route>
             <Route exact path="/:type/shop/pokemon">
-                <PokeContainer />
+                <PokeSearch />
             </Route>
             <Route exact path="/:type/shop/pokemon/details/:id">
                 <PokeDetails />
@@ -37,5 +37,3 @@ const PokeShopContainer = ({ match }: RouteComponentProps) => {
         </>
     );
 };
-
-export default PokeShopContainer;

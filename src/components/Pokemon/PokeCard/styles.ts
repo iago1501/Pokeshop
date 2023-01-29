@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PressStart2P } from '../CustomUI/Fonts';
+import { PressStart2P } from '../../CustomUI/Fonts';
 
 const TYPES_BACKGROUND = {
     fire: 'rgb(255, 90, 90)',

@@ -1,6 +1,6 @@
 import { Stat as PokemonStat } from 'store/ducks/pokemon';
-import { ProgressStatus } from '../CustomUI/ProgressBar';
-import { PressStart2P } from '../CustomUI/Fonts';
+import { ProgressStatus } from '../../CustomUI/ProgressBar';
+import { PressStart2P } from '../../CustomUI/Fonts';
 import { PokeStatus, StatusContainer } from './styles';
 
 type PokemonStatusContainerProps = {
@@ -25,7 +25,7 @@ const POKE_STATUS = {
 //     attack: 'purple',
 // };
 
-const PokeStatusContainer = ({ stats }: PokemonStatusContainerProps) => (
+export const PokeStatusContainer = ({ stats }: PokemonStatusContainerProps) => (
     <StatusContainer>
         {stats.map((status) => (
             <PokeStatus key={status.stat.name}>
@@ -47,5 +47,3 @@ const PokeStatusContainer = ({ stats }: PokemonStatusContainerProps) => (
         ))}
     </StatusContainer>
 );
-
-export default PokeStatusContainer;

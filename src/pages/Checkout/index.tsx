@@ -5,8 +5,8 @@ import { cartSelector, selectCartTotal, clearCart } from 'store/ducks/cart';
 import { Helmet } from 'react-helmet';
 import { withRouter } from 'react-router';
 import { RouteComponentProps } from 'react-router-dom';
-import CheckoutItem from '../CheckoutItem';
-import { StripeCheckoutButton } from '../CustomUI/Button';
+import CheckoutItem from '../../components/Checkout/CheckoutItem';
+import { StripeCheckoutButton } from '../../components/CustomUI/Button';
 
 const useStyles = makeStyles((theme) => ({
     root: {

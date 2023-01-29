@@ -17,7 +17,7 @@ import {
 } from 'store/ducks/pokemon';
 
 import { useDispatch, useSelector } from 'react-redux';
-import PokeCard from '../PokeCard';
+import PokeCard from '../../components/Pokemon/PokeCard';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const PokeContainer = () => {
+export const PokeSearch = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
@@ -78,5 +78,3 @@ const PokeContainer = () => {
         <PikachuBalloon text="Someting went wrong on fetch =(" />
     );
 };
-
-export default PokeContainer;

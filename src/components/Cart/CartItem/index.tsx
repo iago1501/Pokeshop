@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { removePokemon, addPokemon, PokemonCart } from 'store/ducks/cart';
-import { PressStart2P } from '../CustomUI/Fonts';
+import { PressStart2P } from '../../CustomUI/Fonts';
 import {
     PokemonCartContainer,
     PokemonCartImage,

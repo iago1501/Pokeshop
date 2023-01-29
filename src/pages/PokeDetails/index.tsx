@@ -4,10 +4,10 @@ import { addPokemon } from 'store/ducks/cart';
 import { useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
-import { PressStart2P } from '../CustomUI/Fonts';
-import PokeBadges from '../PokeBadges';
-import PokeStatusContainer from '../PokeStatusContainer';
-import { EightbitButton } from '../CustomUI/Button';
+import { PokeBadges } from '../../components/Pokemon/PokeBadges';
+import { PressStart2P } from '../../components/CustomUI/Fonts';
+import { PokeStatusContainer } from '../../components/Pokemon/PokeStatusContainer';
+import { EightbitButton } from '../../components/CustomUI/Button';
 
 import {
     PokeDetailsContainer,
@@ -25,7 +25,7 @@ type PokeDetailsParams = {
     id: string;
 };
 
-function PokeDetails() {
+export function PokeDetails() {
     const [pokemon, setPokemon] = useState<Pokemon>();
     const { id } = useParams<PokeDetailsParams>();
     const [pokemonSprite, setPokemonSprite] = useState('front_default');
@@ -135,5 +135,3 @@ function PokeDetails() {
         )
     );
 }
-
-export default PokeDetails;

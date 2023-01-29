@@ -7,7 +7,7 @@ import {
     clearPokemon,
     PokemonCart,
 } from 'store/ducks/cart';
-import { PressStart2P } from '../CustomUI/Fonts';
+import { PressStart2P } from '../../CustomUI/Fonts';
 
 const useStyles = makeStyles(() => ({
     item: {

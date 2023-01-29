@@ -1,12 +1,12 @@
 import { Type as PokemonType } from 'store/ducks/pokemon';
-import { Badge } from '../CustomUI/Badges';
+import { Badge } from '../../CustomUI/Badge';
 import { BadgeContainer } from './styles';
 
 type PokeBadgesProps = {
     types: PokemonType[];
 };
 
-const PokeBadges = ({ types }: PokeBadgesProps) => (
+export const PokeBadges = ({ types }: PokeBadgesProps) => (
     <BadgeContainer>
         {types.map((type) => (
             <Badge key={type.type.name} color={type.type.name}>
@@ -15,5 +15,3 @@ const PokeBadges = ({ types }: PokeBadgesProps) => (
         ))}
     </BadgeContainer>
 );
-
-export default PokeBadges;

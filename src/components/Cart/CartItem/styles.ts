@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PressStart2P } from '../CustomUI/Fonts';
+import { PressStart2P } from '../../CustomUI/Fonts';
 
 export const PokemonCartImage = styled.img`
     height: 50px;
