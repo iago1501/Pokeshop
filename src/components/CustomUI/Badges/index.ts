@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PressStart2P } from '../Fonts';
+import { PressStart2P, PokeFontProps } from '../Fonts';
 
 const theme = {
     normal: 'rgb(165, 175, 236)',
@@ -22,7 +22,11 @@ const theme = {
     ghost: 'rgb(112, 88, 152)',
 };
 
-export const Badge = styled(PressStart2P)`
+interface BadgeProps extends PokeFontProps {
+    width?: string;
+}
+
+export const Badge = styled(PressStart2P)<BadgeProps>`
     text-align: center;
     font-size: 8px;
     margin-top: 10px;
@@ -32,9 +36,9 @@ export const Badge = styled(PressStart2P)`
         rgb(0, 0, 0) 1px -1px 0px, rgb(0, 0, 0) -1px 1px 0px,
         rgb(0, 0, 0) 1px 1px 0px;
     color: rgb(236, 243, 253);
-    background-color: ${(props) => theme[props.color]};
-    box-shadow: ${(props) => theme[props.color]} 0px 0.5em,
-        ${(props) => theme[props.color]} 0px -0.5em,
-        ${(props) => theme[props.color]} 0.5em 0px,
-        ${(props) => theme[props.color]} -0.5em 0px;
+    background-color: ${(props) => theme[props.color as keyof typeof theme]};
+    box-shadow: ${(props) => theme[props.color as keyof typeof theme]} 0px 0.5em,
+        ${(props) => theme[props.color as keyof typeof theme]} 0px -0.5em,
+        ${(props) => theme[props.color as keyof typeof theme]} 0.5em 0px,
+        ${(props) => theme[props.color as keyof typeof theme]} -0.5em 0px;
 `;

@@ -5,15 +5,13 @@ import { IconButton, Badge, Menu, Tooltip } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import { selectCartItemsCount } from 'store/ducks/cart';
-import CartContainer from '../CartContainer';
+import CartContainer from 'components/CartContainer';
 
 const Cart = () => {
     const [open, setOpen] = useState(false);
     const cartQuantity = useSelector(selectCartItemsCount);
 
     const handleMenu = () => {
-        // eslint-disable-next-line no-console
-        // console.log(event);
         setOpen(!open);
     };
 
@@ -52,7 +50,7 @@ const Cart = () => {
                 }}
                 onClose={handleClose}
             >
-                {/* <CartContainer handleClose={handleClose} /> */}
+                <CartContainer handleClose={handleClose} />
             </Menu>
         </div>
     );

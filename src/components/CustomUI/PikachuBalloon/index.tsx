@@ -1,6 +1,10 @@
 import './styles.css';
 
-const PikachuBalloon = ({ text }) => (
+export type PikachuBaloonProps = {
+    text: string;
+};
+
+const PikachuBalloon = ({ text }: PikachuBaloonProps) => (
     <>
         <div className="pikadiv">
             <p className="pikachu-p"> {text} </p>

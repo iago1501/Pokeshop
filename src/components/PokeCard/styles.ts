@@ -12,9 +12,13 @@ const TYPES_BACKGROUND = {
     fairy: 'rgb(235, 143, 241)',
     ice: 'rgb(104,144,240)',
     psychic: 'rgb(130, 55, 130)',
-}
+};
 
-export const CardContainer = styled.div`
+type CardContainerProps = {
+    type: string;
+};
+
+export const CardContainer = styled.div<CardContainerProps>`
     border-radius: 6px;
     -webkit-box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.75);
@@ -22,7 +26,8 @@ export const CardContainer = styled.div`
     width: 100%;
     height: auto;
     min-height: 300px;
-    background-color: ${(props) => TYPES_BACKGROUND[props.type]};
+    background-color: ${(props) =>
+        TYPES_BACKGROUND[props.type as keyof typeof TYPES_BACKGROUND]};
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

@@ -40,8 +40,8 @@ function PokeDetails() {
         fetchData();
     }, [id]);
 
-    const getPrice = (height: number, weight: number) =>
-        ((height + weight) / 10).toFixed(2);
+    const getPrice = (height: number, weight: number): number =>
+        Number(((height + weight) / 10).toFixed(2));
 
     function changeSprite() {
         if (pokemonSprite === 'front_default') {
@@ -50,7 +50,7 @@ function PokeDetails() {
         return setPokemonSprite('front_default');
     }
 
-    const capitalize = (s: any) => {
+    const capitalize = (s: unknown) => {
         if (typeof s !== 'string') return '';
         return s.charAt(0).toUpperCase() + s.slice(1);
     };
@@ -127,7 +127,9 @@ function PokeDetails() {
                             Add to Cart
                         </EightbitButton>
                     </ActionDiv>
-                    <PokeStatusContainer stats={pokemon.stats} />
+                    {pokemon.stats && (
+                        <PokeStatusContainer stats={pokemon.stats} />
+                    )}
                 </PokeDetailsContainer>
             </>
         )

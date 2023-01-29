@@ -1,10 +1,11 @@
-import React from 'react';
 import { withRouter } from 'react-router';
 
 import { fade, makeStyles } from '@material-ui/core/styles';
+import { RouteComponentProps } from 'react-router-dom';
 
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+import { MutableRefObject } from 'react';
 
 const useStyles = makeStyles((theme) => ({
     search: {
@@ -50,7 +51,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const MenuSearch = ({ onChange, history, match }) => {
+interface MenuSearchProps extends RouteComponentProps {
+    onChange: (
+        e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+    ) => void;
+}
+
+const MenuSearch = ({ onChange, history, match }: MenuSearchProps) => {
     const classes = useStyles();
     return (
         <div className={classes.search}>
@@ -58,7 +65,7 @@ const MenuSearch = ({ onChange, history, match }) => {
                 <SearchIcon />
             </div>
             <InputBase
-                onChange={onChange}
+                onChange={(e) => onChange(e)}
                 onKeyUp={(e) =>
                     e.which === 13 &&
                     history.push(

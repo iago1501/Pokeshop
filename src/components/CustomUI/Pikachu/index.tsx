@@ -1,7 +1,10 @@
-import React from 'react';
 import './styles.css';
 
-const Pikachu = ({text}) => (
+type PikachuProps = {
+    text: string;
+};
+
+const Pikachu = ({ text }: PikachuProps) => (
     <>
         <div className="pikachu-wrapper pika-div">
             <h2 className="pika-h2">{text}</h2>

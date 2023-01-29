@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 import StripeCheckout from 'react-stripe-checkout';
-import StripeButtonImage from 'assets/images/checkoutimage.jpg'
+import StripeButtonImage from 'assets/images/checkoutimage.jpg';
 
 export const EightbitButton = styled.a`
     background: #00ce00;
@@ -47,10 +46,18 @@ export const EightbitButton = styled.a`
     }
 `;
 
-export const StripeCheckoutButton = ({ price, onToken }) => {
+type StripeCheckoutButtonProps = {
+    price: number;
+    onToken: () => void;
+};
+
+export const StripeCheckoutButton = ({
+    price,
+    onToken,
+}: StripeCheckoutButtonProps) => {
     const priceForStripe = price * 100;
     const publishablekey = 'pk_test_V03q4pSNu9RMLOSFUgrfNIVf00pJIkXIrT';
-    //TODO CHANGE IMAGE!!!!!
+    // TODO CHANGE IMAGE!!!!!
 
     return (
         <StripeCheckout

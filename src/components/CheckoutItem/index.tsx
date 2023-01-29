@@ -1,8 +1,12 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Hidden } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { removePokemon, addPokemon, clearPokemon } from 'store/ducks/cart';
+import {
+    removePokemon,
+    addPokemon,
+    clearPokemon,
+    PokemonCart,
+} from 'store/ducks/cart';
 import { PressStart2P } from '../CustomUI/Fonts';
 
 const useStyles = makeStyles(() => ({
@@ -30,7 +34,11 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const CheckoutItem = ({ pokemon }) => {
+type CheckoutItemProps = {
+    pokemon: PokemonCart;
+};
+
+const CheckoutItem = ({ pokemon }: CheckoutItemProps) => {
     const dispatch = useDispatch();
     const { name, sprites, quantity, price, id } = pokemon;
     const totalItem = (price * quantity).toFixed(2);
@@ -45,37 +53,39 @@ const CheckoutItem = ({ pokemon }) => {
                 <p className={classes.value}>{name}</p>
             </Grid>
             <Grid item md={2} xs={12} className={classes.quantity}>
-                <div
+                <button
+                    type="button"
                     className={classes.actionIcon}
                     onClick={() => dispatch(removePokemon(pokemon))}
                 >
                     <PressStart2P>-</PressStart2P>
-                </div>
+                </button>
                 <p className={classes.value}>{quantity}</p>
-                <div
+                <button
+                    type="button"
                     className={classes.actionIcon}
                     onClick={() => dispatch(addPokemon(pokemon, price))}
                 >
                     <PressStart2P>+</PressStart2P>
-                </div>
+                </button>
             </Grid>
             <Grid item md={3} xs={12}>
                 <p className={classes.value}>
                     R$ {price} x {quantity} = {totalItem}
                 </p>
             </Grid>
-            <Hidden only="xs">
-                <Grid
-                    item
-                    md={1}
-                    xs="none"
-                    onClick={() => dispatch(clearPokemon(id))}
-                >
-                    <PressStart2P className={classes.actionIcon}>
-                        &#10005;
-                    </PressStart2P>
-                </Grid>
-            </Hidden>
+            {/* <Hidden only="xs"> */}
+            <Grid
+                item
+                md={1}
+                // xs="none"
+                onClick={() => dispatch(clearPokemon(id))}
+            >
+                <PressStart2P className={classes.actionIcon}>
+                    &#10005;
+                </PressStart2P>
+            </Grid>
+            {/* </Hidden> */}
         </Grid>
     );
 };

@@ -6,11 +6,11 @@ import CartItem from '../CartItem';
 import { EightbitButton } from '../CustomUI/Button';
 import { CartItemsContainer } from './styles';
 
-// interface CartContainerProps extends RouteComponentProps {
-//     handleClose: () => void;
-// }
+interface CartContainerProps extends RouteComponentProps {
+    handleClose: () => void;
+}
 
-const CartContainer = ({ match, history, handleClose }) => {
+const CartContainer = ({ match, history, handleClose }: CartContainerProps) => {
     const cart = useSelector(cartSelector);
     const total = useSelector(selectCartTotal).toFixed(2);
 

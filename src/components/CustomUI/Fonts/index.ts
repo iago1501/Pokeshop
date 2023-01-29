@@ -1,7 +1,11 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const PokeFont = styled.h3`
-    color: ${props => props.color};
+export type PokeFontProps = {
+    color?: string;
+};
+
+export const PokeFont = styled.h3<PokeFontProps>`
+    color: ${(props) => props.color};
     display: block;
     margin-block-end: 0px;
     margin-block-start: 0px;
@@ -9,7 +13,6 @@ export const PokeFont = styled.h3`
 
 export const PokeFontSolid = styled(PokeFont)`
     font-family: 'Pokemon Solid';
-
 `;
 export const PokeFontHollow = styled(PokeFont)`
     font-family: 'Pokemon Hollow';

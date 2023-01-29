@@ -1,10 +1,10 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Paper, Hidden } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { cartSelector, selectCartTotal, clearCart } from 'store/ducks/cart';
 import { Helmet } from 'react-helmet';
 import { withRouter } from 'react-router';
+import { RouteComponentProps } from 'react-router-dom';
 import CheckoutItem from '../CheckoutItem';
 import { StripeCheckoutButton } from '../CustomUI/Button';
 
@@ -39,11 +39,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const CheckoutContainer = ({ history, match }) => {
+const CheckoutContainer = ({ history, match }: RouteComponentProps) => {
     const classes = useStyles();
     const cart = useSelector(cartSelector);
-    const total = useSelector(selectCartTotal).toFixed(2);
+    const total = Number(useSelector(selectCartTotal).toFixed(2));
     const dispatch = useDispatch();
+
+    // const hidden = useMediaQuery((theme) => theme.breakpoints.up('xl'));
 
     const onToken = () => {
         dispatch(clearCart());
@@ -63,29 +65,25 @@ const CheckoutContainer = ({ history, match }) => {
                 <Grid container spacing={3} xs={12} md={12}>
                     <Grid item md={12} xs={12} className={classes.externalGrid}>
                         <Paper className={classes.paper}>
-                            <Hidden only="xs">
-                                <Grid
-                                    container
-                                    md={12}
-                                    className={classes.header}
-                                >
-                                    <Grid item md={3} display={{ xs: 'none' }}>
-                                        Pokémon
-                                    </Grid>
-                                    <Grid item md={3}>
-                                        Name
-                                    </Grid>
-                                    <Grid item md={2}>
-                                        Quantity
-                                    </Grid>
-                                    <Grid item md={3}>
-                                        Price
-                                    </Grid>
-                                    <Grid item md={1}>
-                                        Remove
-                                    </Grid>
+                            {/* <Hidden only="xs"> */}
+                            <Grid container md={12} className={classes.header}>
+                                <Grid item md={3}>
+                                    Pokémon
                                 </Grid>
-                            </Hidden>
+                                <Grid item md={3}>
+                                    Name
+                                </Grid>
+                                <Grid item md={2}>
+                                    Quantity
+                                </Grid>
+                                <Grid item md={3}>
+                                    Price
+                                </Grid>
+                                <Grid item md={1}>
+                                    Remove
+                                </Grid>
+                            </Grid>
+                            {/* </Hidden> */}
                             {cart.length > 0 ? (
                                 cart.map((pokemon) => (
                                     <CheckoutItem pokemon={pokemon} />

@@ -51,25 +51,32 @@ export type Sprites = {
     back_default: string;
 };
 
-
 export type Pokemon = {
+    id: number;
     name: string;
     weight: number;
     height: number;
-    base_experience: string;
-    stats: Stat[];
+    base_experience?: string;
+    stats?: Stat[];
     types: Type[];
     sprites: Sprites;
+};
+
+export type PokemonList = {
+    pokemon: {
+        name: string;
+        url: string;
+    };
 };
 
 // Reducer
 
 type INITIAL_STATE_TYPES = {
-    list: Pokemon[];
+    list: PokemonList[];
     type: string;
-    toShow: Pokemon[];
+    toShow: PokemonList[];
     nextToShow: number;
-    filteredList: Pokemon[];
+    filteredList: PokemonList[];
     error: boolean;
 };
 
@@ -83,9 +90,9 @@ const INITIAL_STATE: INITIAL_STATE_TYPES = {
 };
 
 const getPokemonToShow = (
-    fullList: Pokemon[],
-    filteredList: Pokemon[],
-    toShow: Pokemon[],
+    fullList: PokemonList[],
+    filteredList: PokemonList[],
+    toShow: PokemonList[],
     nextToShow: number
 ) => {
     const list = filteredList.length > 0 ? filteredList : fullList;
@@ -102,7 +109,8 @@ export const pokemonSelector = (state: RootState) => state.pokemon.list;
 export const typeFetchSelector = (state: RootState) => state.pokemon.type;
 export const pokemonFetchError = (state: RootState) => state.pokemon.error;
 export const pokemonToShowSelector = (state: RootState) => state.pokemon.toShow;
-export const nextPokemonSliceToShow = (state: RootState) => state.pokemon.nextToShow;
+export const nextPokemonSliceToShow = (state: RootState) =>
+    state.pokemon.nextToShow;
 export const pokemonListSplittedSelector = (state: RootState) =>
     state.pokemon.filteredList.length > 0
         ? split(state.pokemon.filteredList, 18)
@@ -137,12 +145,12 @@ const pokemonReducer = (state = INITIAL_STATE, action: AnyAction) => {
         case Types.SEARCH_POKEMON:
             return {
                 ...state,
-                // filteredList: state.list.filter(
-                //     (pokeInfo) =>
-                //         pokeInfo.pokemon.name
-                //             .toLowerCase()
-                //             .includes(action.payload.toLowerCase()) && pokeInfo
-                // ),
+                filteredList: state.list.filter(
+                    (pokeInfo) =>
+                        pokeInfo.pokemon.name
+                            .toLowerCase()
+                            .includes(action.payload.toLowerCase()) && pokeInfo
+                ),
             };
         case Types.CLEAR_TYPE:
             return { ...INITIAL_STATE };
@@ -185,7 +193,7 @@ export const clearType = () => ({
 
 // TODO: Type dispatch
 
-export const searchPokemon = (text: string) => {
+export const searchPokemon = (text = '') => {
     // TODO: Debounce might be good
     return (dispatch: any) => {
         dispatch(filterList(text));

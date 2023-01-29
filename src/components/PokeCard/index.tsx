@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
-import { getPokemonByIdOrName, typeFetchSelector } from 'store/ducks/pokemon';
+import { RouteComponentProps } from 'react-router-dom';
+import {
+    getPokemonByIdOrName,
+    typeFetchSelector,
+    Pokemon,
+} from 'store/ducks/pokemon';
 
 import { addPokemon } from 'store/ducks/cart';
 import { Skeleton } from '@material-ui/lab';
@@ -34,8 +39,12 @@ const HtmlTooltip = withStyles(() => ({
     },
 }))(Tooltip);
 
-const PokeCard = ({ name, match, history }) => {
-    const [pokemon, setPokemon] = useState();
+interface PokeCardProps extends RouteComponentProps {
+    name: string;
+}
+
+const PokeCard = ({ name, match, history }: PokeCardProps) => {
+    const [pokemon, setPokemon] = useState<Pokemon>();
     const dispatch = useDispatch();
     const type = useSelector(typeFetchSelector);
 
@@ -48,11 +57,12 @@ const PokeCard = ({ name, match, history }) => {
         fetchData();
     }, [name]);
 
-    const getSizeInMeters = (value) => value / 10;
-    const getWeightInKg = (value) => value / 10;
-    const getPrice = (height, weight) => ((height + weight) / 10).toFixed(2);
+    const getSizeInMeters = (value: number): string => (value / 10).toString();
+    const getWeightInKg = (value: number): string => (value / 10).toString();
+    const getPrice = (height: number, weight: number): number =>
+        Number(((height + weight) / 10).toFixed(2));
 
-    return !!pokemon ? (
+    return pokemon ? (
         <CardContainer type={type}>
             <PokeSizes>
                 {getSizeInMeters(pokemon.height)}m <br />

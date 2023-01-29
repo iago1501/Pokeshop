@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet';
+import { RouteComponentProps } from 'react-router-dom';
 import Pikachu from '../CustomUI/Pikachu';
 
-const CheckoutSuccess = ({ history }) => (
+const CheckoutSuccess = ({ history }: RouteComponentProps) => (
     <>
         <Helmet>
             <title>PokéShop - Checkout Success</title>
@@ -11,9 +12,9 @@ const CheckoutSuccess = ({ history }) => (
             />
         </Helmet>
         <div style={{ margin: '15vh 10vw' }}>
-            <p style={{ cursor: 'pointer' }} onClick={() => history.push(`/`)}>
+            <button type="button" onClick={() => history.push(`/`)}>
                 &gt; Back to Home &lt;
-            </p>
+            </button>
         </div>
         <Pikachu text="You Catch` Them!" />
     </>

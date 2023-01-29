@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const CartItemsContainer = styled.div`
     height: auto;
     max-height: 300px;

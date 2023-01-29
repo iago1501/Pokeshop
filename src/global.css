@@ -2,8 +2,12 @@ body {
   margin: 0;
   font-family: 'Trebuchet MS';
   font-weight: 600;
-  background-color: whitesmoke;
+  background-color: rgb(220, 220, 220);
   padding-right: 0px !important;
+}
+
+button, a {
+    cursor: pointer;
 }
 
 @font-face {

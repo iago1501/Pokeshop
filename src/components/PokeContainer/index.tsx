@@ -58,7 +58,7 @@ const PokeContainer = () => {
                 </Helmet>
                 <InfiniteScroll
                     style={{ overflow: 'unset' }}
-                    dataLength={pokemonToShow.length} // This is important field to render the next data
+                    dataLength={pokemonToShow.length} // This is an important field to render the next data
                     next={onLoadMore}
                     hasMore={next < pokemonListSplitted.length}
                     loader={<PokeballLoader />}

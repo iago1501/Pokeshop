@@ -1,46 +1,49 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Tooltip } from '@material-ui/core';
-import { PokeFontHollow } from '../CustomUI/Fonts';
-import MenuSearch from '../CustomUI/MenuSearch';
 import { typeFetchSelector, searchPokemon } from 'store/ducks/pokemon';
 import { useSelector, useDispatch } from 'react-redux';
+import { RouteComponentProps } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import Cart from '../Cart';
 import HomeIcon from '@material-ui/icons/Home';
+import { useState, useEffect } from 'react';
+import MenuSearch from '../CustomUI/MenuSearch';
+import Cart from '../Cart';
 import { MENU_COLORS } from './data';
-import styled from 'styled-components';
+import { CustomPokeFont } from './styles';
 
-export const CustomPokeFont = styled(PokeFontHollow)`
-    cursor: pointer;
-    margin-left: 50px;
-    @media (max-width: 700px) {
-        font-size: 15px;
-        white-space: nowrap;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-`;
-
-const useStyles = (type) =>
+const useStyles = (type: string) =>
     makeStyles({
         root: {
             flexGrow: 1,
         },
         menu: {
-            backgroundColor: MENU_COLORS[type] ? MENU_COLORS[type] : '#000000',
+            backgroundColor: MENU_COLORS[type as keyof typeof MENU_COLORS]
+                ? MENU_COLORS[type as keyof typeof MENU_COLORS]
+                : '#000000',
             top: '0px',
         },
     });
 
-//ao renderizar a página direto de detalhes, o menu não exibe a cor correta
+// ao renderizar a página direto de detalhes, o menu não exibe a cor correta
 
-const MenuAppBar = ({ history, match }) => {
+const MenuAppBar = ({ history, match }: RouteComponentProps) => {
     const type = useSelector(typeFetchSelector);
     const typeshop = history.location.pathname.split('/')[1];
+    const [searchText, setSearchText] = useState('');
 
     const classes = useStyles(typeshop)();
     const dispatch = useDispatch();
+
+    function handleSearchText(
+        e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+    ): void {
+        const newValue = e.target.value;
+        setSearchText(newValue);
+    }
+
+    useEffect(() => {
+        dispatch(searchPokemon(searchText));
+    }, [searchText]);
 
     return (
         <div className={classes.root}>
@@ -68,11 +71,7 @@ const MenuAppBar = ({ history, match }) => {
                     </Tooltip>
 
                     {type && (
-                        <MenuSearch
-                            onChange={(e) =>
-                                dispatch(searchPokemon(e.target.value))
-                            }
-                        />
+                        <MenuSearch onChange={(e) => handleSearchText(e)} />
                     )}
                     <div className={classes.root} />
                     <Cart />

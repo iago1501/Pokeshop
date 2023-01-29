@@ -1,8 +1,27 @@
 import { createSelector } from 'reselect';
 
+import { AnyAction } from 'redux';
+import { RootState } from '../root-reducer';
+import { Pokemon } from './pokemon';
+
+export interface PokemonCart extends Pokemon {
+    quantity: number;
+    price: number;
+}
+
+type INITIAL_STATE_TYPES = {
+    cartItems: PokemonCart[];
+};
+
+// Reducer
+
+const INITIAL_STATE: INITIAL_STATE_TYPES = {
+    cartItems: [],
+};
+
 // Selectors
 
-export const cartSelector = (state) => state.cart.cartItems;
+export const cartSelector = (state: RootState) => state.cart.cartItems;
 
 export const selectCartItemsCount = createSelector(
     [cartSelector],
@@ -28,22 +47,22 @@ export const Types = {
     ADD_POKEMON: 'cart/ADD_POKEMON',
     REMOVE_POKEMON: 'cart/REMOVE_POKEMON',
     CLEAR_POKEMON_FROM_CART: 'cart/CLEAR_ITEM',
-    CLEAR_CART: 'CART/CLEAR_CART'
+    CLEAR_CART: 'CART/CLEAR_CART',
 };
 
 // Action Creators
 
-export const addPokemon = (pokemon, price) => ({
+export const addPokemon = (pokemon: Pokemon, price: number) => ({
     type: Types.ADD_POKEMON,
     payload: { ...pokemon, price },
 });
 
-export const removePokemon = (pokemon) => ({
+export const removePokemon = (pokemon: Pokemon) => ({
     type: Types.REMOVE_POKEMON,
     payload: pokemon,
 });
 
-export const clearPokemon = (pokemonId) => ({
+export const clearPokemon = (pokemonId: number) => ({
     type: Types.CLEAR_POKEMON_FROM_CART,
     payload: pokemonId,
 });
@@ -53,12 +72,17 @@ export const clearCart = () => ({
 });
 
 // Utils
-export const addPokemonToCart = (cartItems, pokemonToAdd) => {
+export const addPokemonToCart = (
+    cartItems: PokemonCart[],
+    pokemonToAdd: PokemonCart
+): PokemonCart[] => {
     const { name, height, weight, id, types, sprites, price } = pokemonToAdd;
 
-    const existingCartItem = cartItems.find((cartItem) => cartItem.id === id);
+    const existsPokemonInCart = cartItems.find(
+        (cartItem) => cartItem.id === id
+    );
 
-    if (existingCartItem) {
+    if (existsPokemonInCart) {
         return cartItems.map((cartItem) =>
             cartItem.id === id
                 ? { ...cartItem, quantity: cartItem.quantity + 1 }
@@ -72,12 +96,17 @@ export const addPokemonToCart = (cartItems, pokemonToAdd) => {
     ];
 };
 
-export const removePokemonFromCart = (cartItems, PokemonToRemove) => {
-    const existingCartItem = cartItems.find(
+export const removePokemonFromCart = (
+    cartItems: PokemonCart[],
+    PokemonToRemove: Pokemon
+): PokemonCart[] => {
+    const existsPokemonInCart = cartItems.find(
         (cartItem) => cartItem.id === PokemonToRemove.id
     );
 
-    if (existingCartItem.quantity === 1) {
+    if (!existsPokemonInCart) return cartItems;
+
+    if (existsPokemonInCart.quantity === 1) {
         return cartItems.filter(
             (cartItem) => cartItem.id !== PokemonToRemove.id
         );
@@ -90,13 +119,7 @@ export const removePokemonFromCart = (cartItems, PokemonToRemove) => {
     );
 };
 
-// Reducer
-
-const INITIAL_STATE = {
-    cartItems: [],
-};
-
-const cartReducer = (state = INITIAL_STATE, action) => {
+const cartReducer = (state = INITIAL_STATE, action: AnyAction) => {
     switch (action.type) {
         case Types.ADD_POKEMON:
             return {
