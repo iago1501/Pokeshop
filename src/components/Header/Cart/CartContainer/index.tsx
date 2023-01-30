@@ -3,7 +3,7 @@ import { cartSelector, selectCartTotal } from 'store/ducks/cart';
 import { RouteComponentProps } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import CartItem from '../CartItem';
-import { EightbitButton } from '../../CustomUI/Button';
+import { EightbitButton } from '../../../CustomUI/Button';
 import { CartItemsContainer } from './styles';
 
 interface CartContainerProps extends RouteComponentProps {
@@ -42,7 +42,7 @@ const CartContainer = ({ match, history, handleClose }: CartContainerProps) => {
                         handleClose();
                     }}
                 >
-                    Go to Checkout!
+                    Catch Them!
                 </EightbitButton>
             )}
         </div>

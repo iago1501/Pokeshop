@@ -120,7 +120,7 @@ export function PokeDetails() {
                                 )
                             }
                         >
-                            Add to Cart
+                            Catch this
                         </EightbitButton>
                     </ActionDiv>
                     {pokemon.stats && (

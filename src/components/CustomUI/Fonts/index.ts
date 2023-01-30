@@ -11,6 +11,13 @@ export const PokeFont = styled.h3<PokeFontProps>`
     margin-block-start: 0px;
 `;
 
+export const PokeFontParagraph = styled.span<PokeFontProps>`
+    color: ${(props) => props.color};
+    display: block;
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+`;
+
 export const PokeFontSolid = styled(PokeFont)`
     font-family: 'Pokemon Solid';
 `;
@@ -19,5 +26,9 @@ export const PokeFontHollow = styled(PokeFont)`
 `;
 
 export const PressStart2P = styled(PokeFont)`
+    font-family: 'Press Start 2P';
+`;
+
+export const PressStart2PParagraph = styled(PokeFontParagraph)`
     font-family: 'Press Start 2P';
 `;

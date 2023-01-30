@@ -6,7 +6,7 @@ import {
     useParams,
     RouteComponentProps,
 } from 'react-router-dom';
-import { fetchPokemonStartAsync } from 'store/ducks/pokemon';
+import { clearType, fetchPokemonStartAsync } from 'store/ducks/pokemon';
 
 import { PokeSearch } from '../../pages/PokeSearch';
 import { PokeDetails } from '../../pages/PokeDetails';
@@ -20,18 +20,19 @@ export const PokeShop = ({ match }: RouteComponentProps) => {
     const { type } = useParams<PokeShopParams>();
 
     useEffect(() => {
+        dispatch(clearType());
         dispatch(fetchPokemonStartAsync(type));
     }, [type, dispatch]);
 
     return (
         <>
-            <Route exact path="/:type/shop">
+            <Route exact path="/:type">
                 <Redirect to={`${match.url}/pokemon`} />
             </Route>
-            <Route exact path="/:type/shop/pokemon">
+            <Route exact path="/:type/pokemon">
                 <PokeSearch />
             </Route>
-            <Route exact path="/:type/shop/pokemon/details/:id">
+            <Route exact path="/:type/pokemon/details/:id">
                 <PokeDetails />
             </Route>
         </>

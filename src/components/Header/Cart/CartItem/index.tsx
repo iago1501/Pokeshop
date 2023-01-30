@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { removePokemon, addPokemon, PokemonCart } from 'store/ducks/cart';
-import { PressStart2P } from '../../CustomUI/Fonts';
+import { PressStart2PParagraph } from '../../../CustomUI/Fonts';
 import {
     PokemonCartContainer,
     PokemonCartImage,
@@ -32,14 +32,14 @@ const CartItem = ({ pokemon }: CartItemProps) => {
                     type="button"
                     onClick={() => dispatch(removePokemon(pokemon))}
                 >
-                    <PressStart2P>-</PressStart2P>
+                    <PressStart2PParagraph>-</PressStart2PParagraph>
                 </button>
-                <PressStart2P>{quantity}</PressStart2P>
+                <PressStart2PParagraph>{quantity}</PressStart2PParagraph>
                 <button
                     type="button"
                     onClick={() => dispatch(addPokemon(pokemon, price))}
                 >
-                    <PressStart2P>+</PressStart2P>
+                    <PressStart2PParagraph>+</PressStart2PParagraph>
                 </button>
             </ButtonContainer>
         </PokemonCartContainer>

@@ -7,7 +7,8 @@ import { withRouter } from 'react-router';
 import HomeIcon from '@material-ui/icons/Home';
 import { useState, useEffect } from 'react';
 import MenuSearch from '../CustomUI/MenuSearch';
-import Cart from '../Cart';
+import Cart from './Cart';
+import Starred from './Starred';
 import { MENU_COLORS } from './data';
 import { CustomPokeFont } from './styles';
 
@@ -63,7 +64,7 @@ const MenuAppBar = ({ history, match }: RouteComponentProps) => {
                             onClick={() =>
                                 type === ''
                                     ? history.push(`${match.url}`)
-                                    : history.push(`${match.url}${type}/shop`)
+                                    : history.push(`${match.url}${type}`)
                             }
                         >
                             Poké{type === typeshop ? type : ''} SHOP
@@ -74,6 +75,7 @@ const MenuAppBar = ({ history, match }: RouteComponentProps) => {
                         <MenuSearch onChange={(e) => handleSearchText(e)} />
                     )}
                     <div className={classes.root} />
+                    <Starred />
                     <Cart />
                 </Toolbar>
             </AppBar>

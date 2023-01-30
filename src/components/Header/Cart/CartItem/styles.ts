@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PressStart2P } from '../../CustomUI/Fonts';
+import { PressStart2P } from '../../../CustomUI/Fonts';
 
 export const PokemonCartImage = styled.img`
     height: 50px;
@@ -44,7 +44,10 @@ export const ButtonContainer = styled.div`
         border: 1px solid #000;
         padding: 2px;
     }
-    & > h3 {
-        padding: 5px;
+    span {
+        margin: 0 0.1rem;
+    }
+    button {
+        padding: 0.1rem;
     }
 `;

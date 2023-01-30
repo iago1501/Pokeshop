@@ -19,7 +19,7 @@ const PokeShopHome = ({ match, history }: RouteComponentProps) => {
             <Helmet title="PokéShop - Home" />
             <HomeDiv>
                 {POKESHOP_TYPES.map((type) => (
-                    <HomeImageContainer>
+                    <HomeImageContainer key={type.id}>
                         <HomeImageDiv
                             imageUrl={type.imageUrl}
                             onClick={() =>

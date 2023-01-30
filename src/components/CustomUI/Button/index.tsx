@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import StripeCheckout from 'react-stripe-checkout';
 import StripeButtonImage from 'assets/images/checkoutimage.jpg';
 
-export const EightbitButton = styled.a`
+export const EightbitButton = styled.button`
     background: #00ce00;
     display: inline-block;
     position: relative;

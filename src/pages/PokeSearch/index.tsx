@@ -46,35 +46,35 @@ export const PokeSearch = () => {
         dispatch(LoadMore());
     };
 
-    return error === false ? (
-        !!pokemonToShow && (
-            <div className={classes.root}>
-                <Helmet>
-                    <title>PokéShop - Poké{type} Shop</title>
-                    <meta
-                        name="description"
-                        content={`Poké${type} Shop, to find your ideal ${type} type Pokémon`}
-                    />
-                </Helmet>
-                <InfiniteScroll
-                    style={{ overflow: 'unset' }}
-                    dataLength={pokemonToShow.length} // This is an important field to render the next data
-                    next={onLoadMore}
-                    hasMore={next < pokemonListSplitted.length}
-                    loader={<PokeballLoader />}
-                    endMessage={<Grid container spacing={2} />}
-                >
-                    <Grid container spacing={2}>
-                        {pokemonToShow.map(({ pokemon: { name, url } }) => (
-                            <Grid key={url} item xs={12} lg={2} md={3} sm={4}>
-                                <PokeCard name={name} />
-                            </Grid>
-                        ))}
-                    </Grid>
-                </InfiniteScroll>
-            </div>
-        )
-    ) : (
-        <PikachuBalloon text="Someting went wrong on fetch =(" />
+    if (error === true) {
+        return <PikachuBalloon text="Someting went wrong on fetch =(" />;
+    }
+
+    return (
+        <div className={classes.root}>
+            <Helmet>
+                <title>PokéShop - Poké{type} Shop</title>
+                <meta
+                    name="description"
+                    content={`Poké${type} Shop, to find your ideal ${type} type Pokémon`}
+                />
+            </Helmet>
+            <InfiniteScroll
+                style={{ overflow: 'unset' }}
+                dataLength={pokemonToShow.length} // This is an important field to render the next data
+                next={onLoadMore}
+                hasMore={next < pokemonListSplitted.length}
+                loader={<PokeballLoader />}
+                endMessage={<Grid container spacing={2} />}
+            >
+                <Grid container spacing={2}>
+                    {pokemonToShow.map(({ pokemon: { name, url } }) => (
+                        <Grid key={url} item xs={12} lg={2} md={3} sm={4}>
+                            <PokeCard name={name} type={type} />
+                        </Grid>
+                    ))}
+                </Grid>
+            </InfiniteScroll>
+        </div>
     );
 };

@@ -47,3 +47,9 @@ button, a {
       width: auto !important;
       padding-right: 0px !important;
   }
+
+  @media (max-width: 720px){
+    html {
+     font-size: 18px;
+    }
+   }

@@ -127,6 +127,11 @@ const getPokemonToShow = (
 ) => {
     const list = filteredList.length > 0 ? filteredList : fullList;
 
+    // eslint-disable-next-line no-console
+    console.log(fullList);
+    // eslint-disable-next-line no-console
+    console.log(nextToShow);
+
     if (split(list, MAX_ITEMS_PER_PAGE).length > nextToShow)
         return [...toShow, ...split(list, MAX_ITEMS_PER_PAGE)[nextToShow]];
 
@@ -166,7 +171,7 @@ export const fetchPokemonStartAsync = (type: string) => {
                     API_TYPES[type as keyof typeof API_TYPES]
                 }`
             )
-            .then((res) => {
+            .then(async (res) => {
                 dispatch(fetchPokemonSuccess(res));
                 dispatch(pokemonToShow());
             })
@@ -184,8 +189,8 @@ export const nextPokemonSliceToShow = (state: RootState) =>
     state.pokemon.nextToShow;
 export const pokemonListSplittedSelector = (state: RootState) =>
     state.pokemon.filteredList.length > 0
-        ? split(state.pokemon.filteredList, 18)
-        : split(state.pokemon.list, 18);
+        ? split(state.pokemon.filteredList, MAX_ITEMS_PER_PAGE)
+        : split(state.pokemon.list, MAX_ITEMS_PER_PAGE);
 
 // Reducer
 
@@ -207,7 +212,7 @@ const pokemonReducer = (state = INITIAL_STATE, action: AnyAction) => {
                     state.toShow,
                     state.nextToShow
                 ),
-                nextToShow: state.nextToShow + 1,
+                nextToShow: state.list.length > 0 ? state.nextToShow + 1 : 0,
             };
         case Types.CLEAR_TO_SHOW:
             return {

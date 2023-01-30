@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router';
 import { RouteComponentProps } from 'react-router-dom';
-import {
-    getPokemonByIdOrName,
-    typeFetchSelector,
-    Pokemon,
-} from 'store/ducks/pokemon';
+import { useStarred } from 'hooks/useStarred';
+import { getPokemonByIdOrName, Pokemon } from 'store/ducks/pokemon';
 
 import { addPokemon } from 'store/ducks/cart';
 import { Skeleton } from '@material-ui/lab';
+import StarIcon from '@material-ui/icons/Star';
 
 import { PressStart2P } from 'components/CustomUI/Fonts';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -27,6 +25,7 @@ import {
     PokeName,
     PokeSizes,
     ButtonContainer,
+    Favorite,
 } from './styles';
 
 const HtmlTooltip = withStyles(() => ({
@@ -41,21 +40,33 @@ const HtmlTooltip = withStyles(() => ({
 
 interface PokeCardProps extends RouteComponentProps {
     name: string;
+    type: string;
 }
 
-const PokeCard = ({ name, match, history }: PokeCardProps) => {
-    const [pokemon, setPokemon] = useState<Pokemon>();
+interface PokemonWithStarred extends Pokemon {
+    starred: string;
+}
+
+const PokeCard = ({ name, type, history }: PokeCardProps) => {
+    const [pokemon, setPokemon] = useState<PokemonWithStarred>();
     const dispatch = useDispatch();
-    const type = useSelector(typeFetchSelector);
+    const { updateStarredList } = useStarred();
+    const { starred } = useStarred();
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getPokemonByIdOrName(name);
-            setPokemon(result);
+            const pokemonResult = await getPokemonByIdOrName(name);
+            const isStarred = starred.find(
+                (starredPokemon) => starredPokemon.id === pokemonResult.id
+            );
+            setPokemon({
+                ...pokemonResult,
+                starred: isStarred ? 'starred' : 'notStarred',
+            });
         };
 
         fetchData();
-    }, [name]);
+    }, [name, starred]);
 
     const getSizeInMeters = (value: number): string => (value / 10).toString();
     const getWeightInKg = (value: number): string => (value / 10).toString();
@@ -65,12 +76,13 @@ const PokeCard = ({ name, match, history }: PokeCardProps) => {
     return pokemon ? (
         <CardContainer type={type}>
             <PokeSizes>
-                {getSizeInMeters(pokemon.height)}m <br />
-                {getWeightInKg(pokemon.weight)}kg
+                <span>#{pokemon.id}</span>
+                <span>{getSizeInMeters(pokemon.height)}m</span>
+                <span>{getWeightInKg(pokemon.weight)}kg</span>
             </PokeSizes>
             <HtmlTooltip
                 onClick={() =>
-                    history.push(`${match.url}/details/${pokemon.id}`)
+                    history.push(`/${type}/pokemon/details/${pokemon.id}`)
                 }
                 title={<PressStart2P>Details</PressStart2P>}
             >
@@ -78,11 +90,15 @@ const PokeCard = ({ name, match, history }: PokeCardProps) => {
                     <CardImage src={pokemon.sprites.front_default} />
                 </CardImageContainer>
             </HtmlTooltip>
+            <Favorite
+                starred={pokemon.starred}
+                onClick={() => updateStarredList({ ...pokemon, type })}
+            >
+                <StarIcon />
+            </Favorite>
             <InfoContainer>
                 <PokeInfo>
-                    <PokeName>
-                        #{pokemon.id} {pokemon.name}
-                    </PokeName>
+                    <PokeName>{pokemon.name}</PokeName>
                     <PokePrice>
                         R$ {getPrice(pokemon.height, pokemon.weight)}
                     </PokePrice>
@@ -100,7 +116,7 @@ const PokeCard = ({ name, match, history }: PokeCardProps) => {
                         )
                     }
                 >
-                    Add to Cart
+                    Catch this
                 </EightbitButton>
             </ButtonContainer>
         </CardContainer>

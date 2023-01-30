@@ -39,7 +39,9 @@ export const CardContainer = styled.div<CardContainerProps>`
     }
 
     @media (max-width: 700px) {
-        height: 50vh;
+        button {
+            margin-bottom: 1rem;
+        }
     }
 `;
 
@@ -73,25 +75,64 @@ export const InfoContainer = styled.div`
 `;
 
 export const PokeName = styled(PressStart2P)`
-    font-size: 10px;
-    margin-top: 15%;
+    font-size: 0.7rem;
+    margin-top: 1rem;
     text-transform: capitalize;
 `;
 
-export const PokeSizes = styled.span`
+export const PokeSizes = styled.div`
     position: absolute;
     align-self: start;
     padding: 15px;
-    font-size: 12px;
     color: black;
+
+    span {
+        font-size: 0.8rem;
+        display: block;
+    }
+`;
+
+type FavoriteProps = {
+    starred: string;
+};
+
+const starredValues = {
+    starred: {
+        bgColor: 'yellow',
+        scale: 1.15,
+    },
+    notStarred: {
+        bgColor: 'rgba(255, 255, 255, 0.4)',
+        scale: 1,
+    },
+};
+
+export const Favorite = styled.a<FavoriteProps>`
+    position: absolute;
+    align-self: end;
+    padding: 15px;
+    cursor: pointer;
+
+    svg {
+        stroke: black;
+        fill: ${({ starred }) =>
+            starredValues[starred as keyof typeof starredValues].bgColor};
+        scale: ${({ starred }) =>
+            starredValues[starred as keyof typeof starredValues].scale};
+        transition: fill 0.2s, transform 0.5s;
+    }
+
+    svg:hover {
+        fill: rgba(255, 255, 255, 0.8);
+        transform: scale(1.15) rotate(144deg);
+    }
 `;
 
 export const PokePrice = styled.p`
-    font-size: 12px;
-    text-shadow: 0px 0px 1px #ffffff;
+    font-size: 0.8rem;
     color: black;
     font-family: 'Press Start 2P';
-    margin-block-start: 0.5em;
+    margin: 0.5rem 0rem;
 `;
 
 export const PokeInfo = styled.div`

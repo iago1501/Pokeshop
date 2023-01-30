@@ -28,8 +28,8 @@ interface BadgeProps extends PokeFontProps {
 
 export const Badge = styled(PressStart2P)<BadgeProps>`
     text-align: center;
-    font-size: 8px;
-    margin-top: 10px;
+    font-size: 0.5rem;
+    margin-top: 0.875rem;
     width: ${(props) => (props.width ? props.width : 'auto')};
     text-transform: capitalize;
     text-shadow: rgb(0, 0, 0) 3px 3px 0px, rgb(0, 0, 0) -1px -1px 0px,
