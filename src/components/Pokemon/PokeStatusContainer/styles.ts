@@ -4,8 +4,7 @@ export const StatusContainer = styled.div`
     display: flex;
     flex-direction: column;
     flex-flow: column-reverse;
-    margin: 20px;
-    margin-top: 5px;
+    margin: 2rem 2rem;
     justify-content: center;
 `;
 

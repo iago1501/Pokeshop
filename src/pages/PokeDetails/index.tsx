@@ -5,41 +5,63 @@ import { useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import { capitalize } from 'utils';
+import { useStarred } from 'hooks/useStarred';
+import StarIcon from '@material-ui/icons/Star';
+
 import { PokeBadges } from '../../components/Pokemon/PokeBadges';
-import { PressStart2P } from '../../components/CustomUI/Fonts';
+
+import {
+    PressStart2P,
+    PressStart2PParagraph,
+    PressStart2PSpan,
+} from '../../components/CustomUI/Fonts';
 import { PokeStatusContainer } from '../../components/Pokemon/PokeStatusContainer';
 import { EightbitButton } from '../../components/CustomUI/Button';
 
 import {
     PokeDetailsContainer,
     PokeWrapper,
-    PomeImageContainer,
+    PokeImageContainer,
     PokeImage,
     PokeBaseInfoContainer,
     PokeBaseInfo,
     BaseInfoHeader,
     BaseInfoBody,
     ActionDiv,
+    Favorite,
+    PokeNameContainer,
 } from './style';
 
 type PokeDetailsParams = {
     id: string;
 };
 
+interface PokeDetailsProps extends Pokemon {
+    starred: string;
+}
+
 export function PokeDetails() {
-    const [pokemon, setPokemon] = useState<Pokemon>();
+    const [pokemon, setPokemon] = useState<PokeDetailsProps>();
     const { id } = useParams<PokeDetailsParams>();
+    const { updateStarredList, starred } = useStarred();
     const [pokemonSprite, setPokemonSprite] = useState('front_default');
     const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getPokemonByIdOrName(id);
-            setPokemon(result);
+            const pokemonResult = await getPokemonByIdOrName(id);
+
+            const isStarred = starred.find(
+                (starredPokemon) => starredPokemon.id === pokemonResult.id
+            );
+            setPokemon({
+                ...pokemonResult,
+                starred: isStarred ? 'starred' : 'notStarred',
+            });
         };
 
         fetchData();
-    }, [id]);
+    }, [id, starred]);
 
     const getPrice = (height: number, weight: number): number =>
         Number(((height + weight) / 10).toFixed(2));
@@ -69,9 +91,9 @@ export function PokeDetails() {
                 {/* <Button variant="contained" style={{marginTop: '12vh', marginLeft: '10px'}}>Back to Shop</Button> */}
                 <PokeDetailsContainer>
                     <PokeWrapper>
-                        <PomeImageContainer>
+                        <PokeImageContainer>
                             <button type="button" onClick={changeSprite}>
-                                <PressStart2P>&lt;</PressStart2P>
+                                <PressStart2PSpan>{'<'}</PressStart2PSpan>
                             </button>
                             <PokeImage
                                 src={
@@ -81,27 +103,44 @@ export function PokeDetails() {
                                 }
                             />
                             <button type="button" onClick={changeSprite}>
-                                <PressStart2P>&gt;</PressStart2P>
+                                <PressStart2PSpan>{'>'}</PressStart2PSpan>
                             </button>
-                        </PomeImageContainer>
+                        </PokeImageContainer>
                         <PokeBaseInfoContainer>
+                            {/* TODO: Evolutions */}
                             <PokeBaseInfo>
                                 <BaseInfoHeader>
-                                    <PressStart2P>
-                                        {'>'} {pokemon.name.toUpperCase()}
-                                    </PressStart2P>
-                                    <PokeBadges types={pokemon.types} />
+                                    <PokeNameContainer>
+                                        <PressStart2P>
+                                            {`> ${pokemon.name.toUpperCase()}`}
+                                        </PressStart2P>
+                                        <Favorite
+                                            starred={pokemon.starred}
+                                            onClick={() =>
+                                                updateStarredList({
+                                                    ...pokemon,
+                                                    type: pokemon.types[0].type
+                                                        .name,
+                                                })
+                                            }
+                                        >
+                                            <StarIcon />
+                                        </Favorite>
+                                    </PokeNameContainer>
+                                    <div>
+                                        <PokeBadges types={pokemon.types} />
+                                    </div>
                                 </BaseInfoHeader>
                                 <BaseInfoBody>
-                                    <PressStart2P>
+                                    <PressStart2PParagraph>
                                         Weight: {pokemon.weight}
-                                    </PressStart2P>
-                                    <PressStart2P>
+                                    </PressStart2PParagraph>
+                                    <PressStart2PParagraph>
                                         Height: {pokemon.height}
-                                    </PressStart2P>
-                                    <PressStart2P>
+                                    </PressStart2PParagraph>
+                                    <PressStart2PParagraph>
                                         BaseXP: {pokemon.base_experience}
-                                    </PressStart2P>
+                                    </PressStart2PParagraph>
                                 </BaseInfoBody>
                             </PokeBaseInfo>
                         </PokeBaseInfoContainer>

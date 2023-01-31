@@ -29,16 +29,21 @@ export const PokeWrapper = styled.div`
     }
 `;
 
-export const PomeImageContainer = styled.div`
+export const PokeImageContainer = styled.div`
     text-align: center;
     display: flex;
     padding: 10px;
     justify-content: center;
-    & > h3 {
+    button {
+        background: transparent;
+        border: none;
+    }
+    span {
         cursor: pointer;
         font-size: 30px;
+        color: white;
         border: 2px solid #fff;
-        padding: 10px;
+        padding: 0.5rem;
         width: 30px;
         height: 30px;
         align-self: center;
@@ -66,24 +71,45 @@ export const PokeBaseInfoContainer = styled.div`
     flex-shrink: 1;
 `;
 
+export const PokeNameContainer = styled.div`
+    display: flex;
+
+    h3 {
+        padding: 0.3rem 0;
+    }
+
+    a {
+        align-self: start;
+        margin: 0px;
+        width: auto !important;
+    }
+`;
+
 export const BaseInfoHeader = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr;
     @media (max-width: 700px) {
         grid-template-columns: max-content;
     }
-    & > h3 {
-        font-size: 0.8rem;
+
+    div {
+        a {
+            width: 100%;
+        }
     }
-    & > a {
-        width: 100%;
+
+    h3 {
+        font-size: 1rem;
+    }
+    a {
         margin-top: 0px;
         display: inline-flex;
-        height: 10px;
-        & > h3 {
+        height: 1rem;
+        h3 {
             margin: 0px;
+            font-size: 0.6rem;
             width: 50%;
-            padding: 0px;
+            padding: 0.1rem;
             margin-left: 20px;
             height: auto !important;
         }
@@ -93,7 +119,7 @@ export const BaseInfoHeader = styled.div`
 export const BaseInfoBody = styled.div`
     display: flex;
     flex-direction: row;
-    & > h3 {
+    p {
         width: 100%;
         font-size: 0.8rem;
         @media (max-width: 700px) {
@@ -122,8 +148,46 @@ export const ActionDiv = styled.div`
     & > a {
         margin-top: 10px;
     }
+    button {
+        margin-top: 3rem;
+    }
     @media (max-width: 700px) {
         text-align: center;
         margin: 10px;
+    }
+`;
+
+type FavoriteProps = {
+    starred: string;
+};
+
+const starredValues = {
+    starred: {
+        bgColor: 'yellow',
+        scale: 1.15,
+    },
+    notStarred: {
+        bgColor: 'rgba(255, 255, 255, 0.4)',
+        scale: 1,
+    },
+};
+
+export const Favorite = styled.a<FavoriteProps>`
+    position: relative;
+    align-self: end;
+    cursor: pointer;
+
+    svg {
+        stroke: black;
+        fill: ${({ starred }) =>
+            starredValues[starred as keyof typeof starredValues].bgColor};
+        scale: ${({ starred }) =>
+            starredValues[starred as keyof typeof starredValues].scale};
+        transition: fill 0.2s, transform 0.5s;
+    }
+
+    svg:hover {
+        fill: rgba(255, 255, 255, 0.8);
+        transform: scale(1.15) rotate(144deg);
     }
 `;

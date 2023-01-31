@@ -9,6 +9,7 @@ type PokeBadgesProps = {
 export const PokeBadges = ({ types }: PokeBadgesProps) => (
     <BadgeContainer>
         {types.map((type) => (
+            // TODO: When clicking the button, redirect to search page
             <Badge key={type.type.name} color={type.type.name}>
                 {type.type.name}
             </Badge>
