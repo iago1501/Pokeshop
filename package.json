@@ -21,7 +21,7 @@
     "@types/redux-logger": "^3.0.9",
     "@types/redux-thunk": "^2.1.0",
     "@types/websocket": "^1.0.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "eslint-import-resolver-typescript": "^3.5.3",
     "gh-pages": "^3.0.0",
     "gitmoji-cli": "^3.2.4",
