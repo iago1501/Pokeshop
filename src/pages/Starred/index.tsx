@@ -9,8 +9,8 @@ import PokeCard from '../../components/Pokemon/PokeCard';
 const useStyles = makeStyles(() => ({
     root: {
         flexGrow: 1,
-        margin: '10px',
-        marginTop: '80px',
+        margin: '2rem',
+        marginTop: '5rem',
     },
     content: {
         minHeight: '65vh',
@@ -33,18 +33,18 @@ export const PokeStarred = () => {
                     content="PokéBag, your starred pokemons walk together with you"
                 />
             </Helmet>
-            <Grid container spacing={2}>
+            <Grid container spacing={0}>
                 <Grid item xs={12}>
                     <h2>My Starred List</h2>
                 </Grid>
-                <Grid item xs={12} className={classes.content}>
+                <Grid container xs={12} spacing={3} className={classes.content}>
                     {starred.map(({ name, id, type }) => (
                         <Grid key={id} item xs={12} lg={4} md={4} sm={6}>
                             <PokeCard name={name} type={type} />
                         </Grid>
                     ))}
                 </Grid>
-                <Grid item xs={12} justifyContent="center">
+                <Grid item xs={12}>
                     <p className={classes.paragraph}>
                         You cant carry more than 6 Pokémons with you, thats the
                         rule

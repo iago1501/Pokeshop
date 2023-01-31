@@ -5,7 +5,6 @@ import { RouteComponentProps } from 'react-router-dom';
 
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import { MutableRefObject } from 'react';
 
 const useStyles = makeStyles((theme) => ({
     search: {
