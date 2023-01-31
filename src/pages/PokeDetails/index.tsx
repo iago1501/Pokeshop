@@ -97,9 +97,14 @@ export function PokeDetails() {
                             </button>
                             <PokeImage
                                 src={
-                                    pokemon.sprites[
-                                        pokemonSprite as keyof Sprites
-                                    ]
+                                    // TODO: need typing
+                                    pokemon.sprites.front_default
+                                        ? pokemon.sprites[
+                                              pokemonSprite as keyof unknown
+                                          ]
+                                        : pokemon.sprites.other[
+                                              'official-artwork'
+                                          ][pokemonSprite as keyof unknown]
                                 }
                             />
                             <button type="button" onClick={changeSprite}>

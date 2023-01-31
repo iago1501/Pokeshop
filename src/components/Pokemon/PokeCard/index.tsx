@@ -87,7 +87,13 @@ const PokeCard = ({ name, type, history }: PokeCardProps) => {
                 title={<PressStart2P>Details</PressStart2P>}
             >
                 <CardImageContainer>
-                    <CardImage src={pokemon.sprites.front_default} />
+                    <CardImage
+                        src={
+                            pokemon.sprites.front_default ??
+                            pokemon.sprites.other['official-artwork']
+                                .front_default
+                        }
+                    />
                 </CardImageContainer>
             </HtmlTooltip>
             <Favorite
